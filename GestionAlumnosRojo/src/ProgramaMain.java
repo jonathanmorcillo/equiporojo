@@ -11,15 +11,15 @@ public class ProgramaMain {
 				+ "\n10. Poner una falta (en una sesión)." + "\n11. Pasar lista." + "\n12. Listar faltas."
 				+ "\n13. Salir.");
 	}
-	
-	//Autor: Luján
+
+	// Autor: Luján
 	public static char repetir() {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
-		
+
 		System.out.println("¿Quieres repetir esta opción?" + "\nEscribe Y si es sí y N si es no.");
-		repetir=entrada.next().charAt(0);
-		
+		repetir = entrada.next().charAt(0);
+
 		return repetir;
 	}
 
@@ -27,7 +27,6 @@ public class ProgramaMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		
 		Scanner entrada = new Scanner(System.in);
 
 		int menu = 0;
@@ -38,56 +37,56 @@ public class ProgramaMain {
 			switch (menu) {
 			case 1:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 2:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 3:
 				break;
 			case 4:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 5:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 6:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 7:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 8:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 9:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 10:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 11:
 				break;
 			case 12:
 				do {
-					
+
 				} while (repetir() == 'Y');
 				break;
 			case 13:
