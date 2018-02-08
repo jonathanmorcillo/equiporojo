@@ -11,45 +11,84 @@ public class ProgramaMain {
 				+ "\n10. Poner una falta (en una sesión)." + "\n11. Pasar lista." + "\n12. Listar faltas."
 				+ "\n13. Salir.");
 	}
+	
+	//Autor: Luján
+	public static char repetir() {
+		Scanner entrada = new Scanner(System.in);
+		char repetir = ' ';
+		
+		System.out.println("¿Quieres repetir esta opción?" + "\nEscribe Y si es sí y N si es no.");
+		repetir=entrada.next().charAt(0);
+		
+		return repetir;
+	}
 
+	// Autor: Luján
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//Autor: Luján
-		Scanner entrada= new Scanner(System.in);
 		
+		Scanner entrada = new Scanner(System.in);
+
 		int menu = 0;
-		boolean repetir = false;
 		do {
 			mostrarMenu();
-			menu=entrada.nextInt();
-			
-			switch(menu) {
+			menu = entrada.nextInt();
+
+			switch (menu) {
 			case 1:
 				do {
-				}while(repetir==true);
+					
+				} while (repetir() == 'Y');
 				break;
 			case 2:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 3:
 				break;
 			case 4:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 5:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 6:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 7:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 8:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 9:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 10:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 11:
 				break;
 			case 12:
+				do {
+					
+				} while (repetir() == 'Y');
 				break;
 			case 13:
 				System.out.println("Saliendo del programa...");
@@ -58,8 +97,9 @@ public class ProgramaMain {
 				System.out.println("Error.");
 				break;
 			}
-					
-		}while(menu!=13);
+
+		} while (menu != 13);
+		System.out.println("Programa finalizado.");
 	}
 
 }
