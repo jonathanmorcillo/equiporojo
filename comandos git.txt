@@ -1,0 +1,41 @@
+//borrar carpeta desde el bash
+rm -rf .git
+
+// Empezando:
+git init
+ git remote add origin git@github.com:yourUserName/yourNewRepoName.git
+git clone https://www.github.com/pacampbell/Game
+// cambiar a rama
+git checkout rama
+// comprobar/descargar archivos servidor
+git fetch
+git pull origin rama
+// cambiar y crear nueva rama
+git checkout -b rama2
+// cuando hagamos modificaciones
+git add .
+git commit -m "comentario"
+// cuando hemos terminado actualizamos nuestra rama
+git push
+// con esta opcion se sube la nueva rama local
+git push --set-upstream origin nombre_rama
+
+git status
+
+// cuando todo esta ok
+git pull origin rama
+// si no hay confilcots subimos:
+git push origin rama2
+
+//si no esta ok (MERGING)
+//editamos los archivos afectados. solucionamos incidencia.
+git add .
+git commit -m "comentario"
+git push origin rama2
+
+// unir nuestra rama a la original
+git checkout rama
+git merge rama2
+
+// borrar una rama
+git branch -d rama2
