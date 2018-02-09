@@ -1,31 +1,31 @@
-//Autor: Juan Mártin
+//Autor: Juan Martín
 public class DiaClase {
 	
 	//Variables son objetos de las clases horario y fecha//
-	private Object fechaDia;
-	private Object sesion;
+	private Fecha fechaDia;
+	private Horario sesion;
 	
 	//Construcctor//
 	
-	public DiaClase (Object fechaDia, Object sesion) {
+	public DiaClase (Fecha fechaDia) {
 		this.fechaDia = fechaDia;
-		this.sesion = sesion;
+		this.sesion = Horario sesion = new Horario;
 	}
 	
 	//metodos//
 	//getters//
 	
-	public Object getFechaDia() {
+	public Fecha getFechaDia() {
 		return fechaDia;
 	}
 	
-	public Object getSesion() {
+	public Horario getSesion() {
 		return sesion;
 	}
 	
 	//setter//
 	
-	public void setFechaDia (Object fechaDia) {
+	public void setFechaDia (Fecha fechaDia) {
 		this.fechaDia = fechaDia;
 	}
 	//sobrecarga equals//
