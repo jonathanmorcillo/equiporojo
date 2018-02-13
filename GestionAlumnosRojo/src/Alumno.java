@@ -12,14 +12,14 @@ public class Alumno {
 	private String telefono;
 	private String email;
 	private ArrayList<DiaClase> faltas;
-	private ArrayList<Calificaciones> notas;
+	private ArrayList<Calificacion> notas;
 
 	// Constructor
 
 	public Alumno(String dni) {
 		this.dni = dni;
 		this.faltas = new ArrayList<DiaClase>();
-		this.notas = new ArrayList<Calificaciones>();
+		this.notas = new ArrayList<Calificacion>();
 	}
 
 	// Constructor 2
@@ -29,7 +29,7 @@ public class Alumno {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.faltas = new ArrayList<DiaClase>();
-		this.notas = new ArrayList<Calificaciones>();
+		this.notas = new ArrayList<Calificacion>();
 
 	}
 
@@ -59,7 +59,7 @@ public class Alumno {
 		return faltas;
 	}
 
-	public ArrayList<Calificaciones> getNotas() {
+	public ArrayList<Calificacion> getNotas() {
 		return notas;
 	}
 

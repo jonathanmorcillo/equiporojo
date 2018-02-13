@@ -1,7 +1,5 @@
 //Autor: Santiago Pérez
 
-package Clases;
-
 public class Fecha {
 	
 	private int dia, mes, agno;

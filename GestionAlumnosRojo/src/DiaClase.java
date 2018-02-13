@@ -28,19 +28,17 @@ public class DiaClase {
 	public void setFechaDia (Fecha fechaDia) {
 		this.fechaDia = fechaDia;
 	}
-	//sobrecarga equals//
-//	public boolean equals (Object object) {
-//		boolean igual = false;
-//		
-//		if (object instanceof Calificacion) {
-//			Calificacion calificacion = (Calificacion) object;
-//			
-//		if(calificacion.getAsignatura ().equalsIgnoreCase(this.getAsignatira())) {
-//			 igual = true;
-//			}
-//			return igual;
-//		}
-//	}
+	// Sobrecarga del método equals de la clase Object
+	public boolean equals(Object object){
+	 boolean igual = false;
+
+	 if(object instanceof DiaClase){
+	 DiaClase diaClase = (DiaClase) object;
+	 if(diaClase.getFechaDia().equals(this.getFechaDia()))
+	 igual = true;
+	 }
+	 return igual;
+	 }
 }
 
 	
