@@ -9,7 +9,7 @@ public class DiaClase {
 	
 	public DiaClase (Fecha fechaDia) {
 		this.fechaDia = fechaDia;
-		this.sesion = Horario sesion = new Horario;
+		this.sesion = new Horario();
 	}
 	
 	//metodos//
