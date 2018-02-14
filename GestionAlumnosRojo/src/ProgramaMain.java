@@ -3,13 +3,17 @@ import java.util.*;
 public class ProgramaMain {
 
 	// Autor: Luján
+	// He hecho una modificación de presentación del menu. Si no os gusta lo pongo como estaba.
 	public static void mostrarMenu() {
-		System.out.println("Selecciona una opción:" + "\n1. Dar de alta alumnnos." + "\n2. Dar de baja alumnos."
-				+ "\n3. Listar los alumnos." + "\n4. Modificar alumnos." + "\n5. Matricular alumnos."
-				+ "\n6. Dar de baja de una asignatura." + "\n7. Introducir calificación trimestral."
-				+ "\n8. Listar calificaciones de alumnos." + "\n9. Poner una falta (Día completo)."
-				+ "\n10. Poner una falta (en una sesión)." + "\n11. Pasar lista." + "\n12. Listar faltas."
-				+ "\n13. Salir.");
+		System.out.println("*********************************");
+		System.out.println("***********   Menú   ************");
+		System.out.println("*********************************");
+		System.out.println("Selecciona una opción:" + "\n1. \t Dar de alta alumnos." + "\n2. \t Dar de baja alumnos."
+				+ "\n3. \t Listar los alumnos." + "\n4. \t Modificar alumnos." + "\n5. \t Matricular alumnos."
+				+ "\n6. \t Dar de baja de una asignatura." + "\n7. \t Introducir calificación trimestral."
+				+ "\n8. \t Listar calificaciones de alumnos." + "\n9. \t Poner una falta (Día completo)."
+				+ "\n10. \t Poner una falta (en una sesión)." + "\n11.  \t Pasar lista." + "\n12. \t Listar faltas."
+				+ "\n13. \t Salir.");
 	}
 
 	// Autor: Luján
@@ -22,6 +26,17 @@ public class ProgramaMain {
 
 		return repetir;
 	}
+	
+	// Autor: Juan Martín
+	
+//	public static boolean existe(String dni) {
+//		if (listarAlumnos.getDni == dni) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//		
+//	}
 
 	// Autor: Luján
 	public static void main(String[] args) {
