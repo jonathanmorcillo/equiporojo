@@ -3,7 +3,6 @@ import java.util.*;
 public class ProgramaMain {
 
 	// Autor: Luján
-	// He hecho una modificación de presentación del menu. Si no os gusta lo pongo como estaba.
 	public static void mostrarMenu() {
 		System.out.println("*********************************");
 		System.out.println("***********   Menú   ************");
@@ -15,7 +14,6 @@ public class ProgramaMain {
 				+ "\n10. \t Poner una falta (en una sesión)." + "\n11.  \t Pasar lista." + "\n12. \t Listar faltas."
 				+ "\n13. \t Salir.");
 	}
-
 	// Autor: Luján
 	public static char repetir() {
 		Scanner entrada = new Scanner(System.in);
@@ -29,14 +27,17 @@ public class ProgramaMain {
 	
 	// Autor: Juan Martín
 	
-//	public static boolean existe(String dni) {
-//		if (listarAlumnos.getDni == dni) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-//		
-//	}
+	public static boolean existe(ArrayList<Alumno> listaAlumnos, String dni) {
+		boolean comprobar = true;
+		for (int i=0; i<listaAlumnos.size(); i++) { 
+			if (listaAlumnos.get(i).getDni().equals(dni)) {
+				comprobar = true;
+			} else {
+				comprobar = false;
+			}	
+		}
+		return comprobar;
+	}
 
 	// Autor: Luján
 	public static void main(String[] args) {
