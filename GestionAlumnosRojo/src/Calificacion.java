@@ -7,6 +7,7 @@ public class Calificacion {
 	// Constructor para inicializar asignatura
 	public Calificacion(String asignatura) {
 		this.asignatura = new String (asignatura);
+		this.nota = "NE";
 	}
 
 	// Metodos getters y setters

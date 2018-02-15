@@ -28,8 +28,8 @@ public class ProgramaMain {
 	// Autor: Juan Martín
 	
 	public static boolean existe(ArrayList<Alumno> listaAlumnos, String dni) {
-		boolean comprobar = true;
-		for (int i=0; i<listaAlumnos.size(); i++) { 
+		boolean comprobar = false ;
+		for (int i=0; i<listaAlumnos.size() && !comprobar; i++) { 
 			if (listaAlumnos.get(i).getDni().equals(dni)) {
 				comprobar = true;
 			} else {
