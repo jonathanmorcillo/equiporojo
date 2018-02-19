@@ -27,18 +27,43 @@ public class ProgramaMain {
 	
 	// Autor: Juan Martín
 	
-	public static boolean existe(ArrayList<Alumno> listaAlumnos, String dni) {
-		boolean comprobar = true;
-		for (int i=0; i<listaAlumnos.size(); i++) { 
+	public static int existe(ArrayList<Alumno> listaAlumnos, String dni) {
+		boolean comprobar = false;
+		int posicion=0;
+		for (int i=0; i<listaAlumnos.size() && !comprobar; i++) { 
 			if (listaAlumnos.get(i).getDni().equals(dni)) {
 				comprobar = true;
+				posicion = i;
 			} else {
 				comprobar = false;
 			}	
 		}
-		return comprobar;
+		
+		if (comprobar==true) {
+			return posicion;
+		} else {
+			return -1;
+		}
 	}
-
+	
+	// Autor: Juan Martín, Metodo 5 Matricular alumnos.
+	
+	
+	
+	
+	
+	
+	// Autor: Juan Martín, Metodo 8 Listar calificaciones del alumno.
+	
+	public static void listarAlumnos(ArrayList<Alumno> listaAlumnos ,String dni) {
+		 
+		
+	}
+	
+	
+	
+	    
+	
 	// Autor: Luján
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
