@@ -27,6 +27,7 @@ public class ProgramaMain {
 	
 	// Autor: Juan Martín
 	
+
 	public static int existe(ArrayList<Alumno> listaAlumnos, String dni) {
 		boolean comprobar = false;
 		int posicion=0;
