@@ -1,6 +1,28 @@
 import java.util.*;
 
 public class ProgramaMain {
+	
+	//Autor: Jose Alberto. Método estático 3
+		public static void listarAlumnos(ArrayList<Alumno> alumno) {
+			alumno = new ArrayList<Alumno>();
+			int num = alumno.size();
+			int cont=0;
+			if (num==0) {
+				System.out.println("No hay alumnos");
+			}
+			Iterator<Alumno> iterador = alumno.iterator();
+			while(iterador.hasNext()) {
+				Alumno lista = iterador.next();
+				String nombre=lista.getNombre();
+				String apellido=lista.getApellidos();
+				String dni=lista.getDni();
+				String email=lista.getEmail();
+				String telefono=lista.getTelefeno();
+				cont+=1;
+				System.out.print(cont+". Nombre: "+nombre+"\nApellido: "+apellido+"\nDNI: "+dni+"\nE-mail: "+email+"\nTeléfono: "+telefono+"\n");
+				
+			}
+		}
 
 	// Autor: Luján
 	public static void mostrarMenu() {
@@ -69,6 +91,7 @@ public class ProgramaMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		ArrayList<Alumno> alumno = new ArrayList<Alumno>();
 		Scanner entrada = new Scanner(System.in);
 
 		int menu = 0;
@@ -88,6 +111,9 @@ public class ProgramaMain {
 				} while (repetir() == 'Y');
 				break;
 			case 3:
+				
+				ProgramaMain.listarAlumnos(alumno);
+				
 				break;
 			case 4:
 				do {
