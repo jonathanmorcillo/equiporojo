@@ -84,8 +84,51 @@ public class ProgramaMain {
 	}
 	
 	
+	// Autor: Luján. Método para sacar el día.
+	public static int sacarDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
+		int exist, dia=0;
+		exist = existe(listaAlumnos,dni);
+		for(int i = 0; i < listaAlumnos.get(exist).getFaltas().size(); i++) {
+			if(listaAlumnos.get(exist).getFaltas().get(i).getFechaDia().equals(fechaDia)) {
+				dia = i;
+			}
+		}
+		return dia;
+	}
 	
-	    
+	// Autor: Luján. Método 9 Poner una falta (Día completo). 
+	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia){
+		Scanner entrada = new Scanner(System.in);
+		int exist, dia=0;
+		exist = existe(listaAlumnos,dni);
+		if(exist > 0) {
+			try {
+				sacarDia(listaAlumnos, dni, fechaDia);
+				listaAlumnos.get(exist).getFaltas().get(dia).getSesion().faltaDiaEntero();
+			}catch(Exception excep) {
+				System.out.println(excep.getMessage());
+			}
+		}
+	}
+	
+	// Autor: Luján. Método 10 Poner una falta (una sesión).
+	public static void ponerFaltaSesion(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia)throws Exception{
+		Scanner entrada = new Scanner(System.in);
+		int sesion, exist, dia=0;
+		exist = existe(listaAlumnos,dni);
+		if(exist > 0) {
+			System.out.println("Dime la sesión:");
+			sesion=entrada.nextInt();
+			try {
+				sacarDia(listaAlumnos, dni, fechaDia);
+				listaAlumnos.get(exist).getFaltas().get(dia).getSesion().faltaHora(sesion);
+			}catch(Exception excep) {
+				System.out.println(excep.getMessage());
+			}
+		}else {
+			throw new Exception("Error: No existe el alumno.");
+		}	
+	}
 	
 	// Autor: Luján
 	public static void main(String[] args) {
