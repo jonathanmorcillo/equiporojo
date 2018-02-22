@@ -122,7 +122,9 @@ public class ProgramaMain {
 			try{
 				System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
 				pos=entrada.nextInt();
-			
+				
+				entrada.next();
+				
 				System.out.println("Introduzca la asignatura que va a calificar");
 				asignatura=entrada.nextLine();
 			
