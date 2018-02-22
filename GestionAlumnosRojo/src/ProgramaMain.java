@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.swing.SingleSelectionModel;
+
 public class ProgramaMain {
 	
 	
@@ -113,13 +115,32 @@ public class ProgramaMain {
 
 	public static void listarCalificaciones (ArrayList<Alumno> listaAlumnos) {
 		Scanner entrada = new Scanner(System.in);
-		int alumno;
+		int alumno, i;
+		String nombre, apellidos, dni;
+		
 		listarAlumnos(listaAlumnos);
-
+		
+		do {
+			
 		System.out.println("Introduzca el número de lista del alumno que desea listar sus calificaciones");
 		alumno = entrada.nextInt();
+		if (alumno < 1 || alumno > listaAlumnos.size()) {
+			System.out.println("Debe seleccionar el número de lista de un Alumno válido.");
+		}
+			
+		} while (alumno < 1 || alumno > listaAlumnos.size());
 		
 		System.out.println("Has selecionado a :");
+		apellidos = listaAlumnos.get(alumno-1).getApellidos();
+		nombre = listaAlumnos.get(alumno-1).getNombre();
+		dni = listaAlumnos.get(alumno-1).getDni();
+		System.out.println(apellidos+", "+nombre+", "+dni);
+		
+		System.out.println("Boletin de notas");
+		for (i = 0; i < listaAlumnos.get(alumno-1).getNotas().size(); i++) {
+			
+			System.out.println("Asignatura : "+listaAlumnos.get(alumno-1).getNotas().get(i).getAsignatura()+" Nota trimestral : "+listaAlumnos.get(alumno-1).getNotas().get(i).getNota());
+		}
 		
 		
 	}
