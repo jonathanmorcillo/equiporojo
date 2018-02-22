@@ -4,7 +4,6 @@ public class ProgramaMain {
 	
 	//Autor: Jose Alberto. Método estático 3
 		public static void listarAlumnos(ArrayList<Alumno> alumno) {
-			alumno = new ArrayList<Alumno>();
 			int num = alumno.size();
 			int cont=0;
 			if (num==0) {
@@ -72,7 +71,35 @@ public class ProgramaMain {
 	// Autor: Juan Martín, Metodo 5 Matricular alumnos.
 	
 	
-	
+	// Autor: Jose Alberto. Método 7: Introducir calificaciones.
+	public static void introducirCalificacion(ArrayList<Calificacion> notas, String dni, ArrayList<Alumno> alumno)throws Exception {
+		Scanner entrada = new Scanner(System.in);
+		String nota, asignatura;
+		int existe, pos=-1;
+		
+		existe = existe(alumno,dni);
+		if (existe>0) {
+			try{
+				System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
+				pos=entrada.nextInt();
+			
+				System.out.println("Introduzca la asignatura que va a calificar");
+				asignatura=entrada.nextLine();
+			
+				Calificacion calificacion = new Calificacion(asignatura);
+				
+				System.out.println("Introduzca la nota obtenida");
+				nota=entrada.nextLine();
+				
+				calificacion.setNota(nota);
+				
+				alumno.get(pos).getNotas().add(calificacion);
+				
+				}catch (Exception except) {
+					System.out.println(except.getMessage());
+				}
+		}
+	}
 	
 	
 	
