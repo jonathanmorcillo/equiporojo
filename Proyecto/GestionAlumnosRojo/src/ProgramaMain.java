@@ -2,8 +2,6 @@ import java.util.*;
 
 import javax.swing.SingleSelectionModel;
 
-import Clases.Alumno;
-
 public class ProgramaMain {
 
 
@@ -30,100 +28,6 @@ public class ProgramaMain {
 
 			return repetir;
 	}
-	
-	//Método estático 1
-	
-	public static void darDeAlta (ArrayList matriculados) {
-		
-		//Opción 1 del menú
-		
-		//Autor: Santiago Pérez
-		
-		//Se recogen los datos del nuevo alumno del usuario
-		
-		Scanner entrada = new Scanner (System.in);
-		
-		String dni;
-		String nombre;
-		String apellidos;
-		String telefono;
-		String email;
-		boolean comprobacion=false;
-		
-		
-		System.out.println ("Introduzca el dni de alumno a matricular:");
-		entrada.nextLine();
-		dni=entrada.nextLine();
-		
-		System.out.println ("Introduzca los apellidos de alumno a matricular:");
-		entrada.nextLine();
-		apellidos=entrada.nextLine();
-		
-		System.out.println ("Introduzca el nombre de alumno a matricular:");
-		entrada.nextLine();
-		nombre=entrada.nextLine();
-		
-		System.out.println ("Introduzca el teléfono de alumno a matricular:");
-		entrada.nextLine();
-		telefono=entrada.nextLine();
-		
-		System.out.println ("Introduzca el email de alumno a matricular:");
-		entrada.nextLine();
-		email=entrada.nextLine();
-		
-		//Se crea un nuevo alumno usando el constructor, y los set para teléfono y email
-		Alumno nuevoAlumno = new Alumno (dni, nombre, apellidos);
-		nuevoAlumno.setTelefono(telefono);
-		nuevoAlumno.setEmail(email);
-		
-		//Se comprueba si el alumno ya existe
-		comprobacion=matriculados.contains(nuevoAlumno);
-		
-		//Si no existe se añade, si existe se muestra un mensaje de error
-		if (comprobacion==false) {
-			
-			matriculados.add(nuevoAlumno);
-			
-		}
-		
-		else {
-			
-			System.out.println("El alumno ya existe.");
-		}
-		
-	}
-		
-		//Método estático 2
-	
-		public static void darDeBaja (ArrayList matriculados) {
-			
-			//Opción 2 del menú
-			
-			//Autor: Santiago Pérez
-			
-			Scanner entrada = new Scanner (System.in);
-			
-			int borrar;
-			int totalalumnos;
-			
-			//Se recoge el número del alumno a eliminar
-			System.out.println("Introduzca el número del alumno a eliminar");
-			borrar=entrada.nextInt();
-			borrar=borrar-1;
-			
-			//Se comprueba la longitud total del ArrayList de matriculados y que el número que
-			//se desea borrar esté dentro. Si lo está se borra ese alumno, si no, se muestra
-			//mensaje de error
-			totalalumnos=matriculados.size();
-			
-			if (borrar>=0&&borrar<=totalalumnos) {
-			
-			matriculados.remove(borrar);
-			
-			}
-			
-			else System.out.println("El alumno que desea borrar no existe");
-		}
 	
 	//Autor: Jose Alberto. Método estático 3
 	public static void listarAlumnos(ArrayList<Alumno> alumno) {
