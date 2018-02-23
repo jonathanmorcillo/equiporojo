@@ -1,6 +1,10 @@
 import java.util.*;
 
+import javax.swing.SingleSelectionModel;
+
 public class ProgramaMain {
+
+
 	// Autor: Luján
 	public static void mostrarMenu() {
 			System.out.println("********************************");
@@ -92,7 +96,6 @@ public class ProgramaMain {
 		} else {
 			throw new Exception("No existe el alumno. Debe darlo de alta primero.");
 		}
-		return posi;
 
 	}
 // Autor: Juan Martín, Metodo 5 Matricular alumnos.
@@ -107,25 +110,96 @@ public class ProgramaMain {
 		}
 	}
 
+	// Autor: Jose Alberto. Método 7: Introducir calificaciones.
+	public static void introducirCalificacion(ArrayList<Calificacion> notas, String dni, ArrayList<Alumno> alumno)throws Exception {
+		Scanner entrada = new Scanner(System.in);
+		String nota, asignatura;
+		int existe, pos=-1;
+		
+		existe = existe(alumno,dni);
+		if (existe>0) {
+			try{
+				System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
+				pos=entrada.nextInt();
+				
+				entrada.next();
+				
+				System.out.println("Introduzca la asignatura que va a calificar");
+				asignatura=entrada.nextLine();
+			
+				Calificacion calificacion = new Calificacion(asignatura);
+				
+				System.out.println("Introduzca la nota obtenida");
+				nota=entrada.nextLine();
+				
+				calificacion.setNota(nota);
+				
+				alumno.get(pos).getNotas().add(calificacion);
+				
+				}catch (Exception except) {
+					System.out.println(except.getMessage());
+				}
+		}
+	}
+	
 // Autor: Juan Martín, Metodo 8 Listar calificaciones del alumno.
 
 	public static void listarCalificaciones (ArrayList<Alumno> listaAlumnos) {
 		Scanner entrada = new Scanner(System.in);
-		int alumno;
+		int alumno, i;
+		String nombre, apellidos, dni;
+		
 		listarAlumnos(listaAlumnos);
-
+		
+		do {
+			
 		System.out.println("Introduzca el número de lista del alumno que desea listar sus calificaciones");
 		alumno = entrada.nextInt();
+		if (alumno < 1 || alumno > listaAlumnos.size()) {
+			System.out.println("Debe seleccionar el número de lista de un Alumno válido.");
+		}
+			
+		} while (alumno < 1 || alumno > listaAlumnos.size());
 		
+		System.out.println("Has selecionado a :");
+		apellidos = listaAlumnos.get(alumno-1).getApellidos();
+		nombre = listaAlumnos.get(alumno-1).getNombre();
+		dni = listaAlumnos.get(alumno-1).getDni();
+		System.out.println(apellidos+", "+nombre+", "+dni);
+		
+		System.out.println("Boletin de notas");
+		for (i = 0; i < listaAlumnos.get(alumno-1).getNotas().size(); i++) {
+			
+			System.out.println("Asignatura : "+listaAlumnos.get(alumno-1).getNotas().get(i).getAsignatura()+" Nota trimestral : "+listaAlumnos.get(alumno-1).getNotas().get(i).getNota());
+		}
+		
+
 		
 	}
+	
+//	// Autor: Luján. Método para sacar el día.
+//	public static int sacarDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
+//		int exist, dia=0;
+//		exist = existe(listaAlumnos,dni);
+//		for(int i = 0; i < listaAlumnos.get(exist).getFaltas().size(); i++) {
+//			if(listaAlumnos.get(exist).getFaltas().get(i).getFechaDia().equals(fechaDia)) {
+//				dia = i;
+//			}
+//		} else {
+//			throw new Exception("No existe el alumno. Debe darlo de alta primero.");
+//		}
+//		return posi;
+//
+//	}
+
+
 	
 	
 	// Autor: Luján
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		ArrayList<Alumno> alumno = new ArrayList<Alumno>();
+
 		Scanner entrada = new Scanner(System.in);
 		
 		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
@@ -206,3 +280,4 @@ public class ProgramaMain {
 	}
 
 }
+
