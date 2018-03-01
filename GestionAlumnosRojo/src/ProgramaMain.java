@@ -2,25 +2,25 @@ import java.util.*;
 
 public class ProgramaMain {
 
-	// Autor: Luj·n
+	// Autor: Luj√°n
 	public static void mostrarMenu() {
 		System.out.println("********************************");
-		System.out.println("***********   Men˙   ***********");
+		System.out.println("***********   Men√∫   ***********");
 		System.out.println("******************************** ");
-		System.out.println("Selecciona una opciÛn:" + "\n1. \t Dar de alta alumnos." + "\n2. \t Dar de baja alumnos."
+		System.out.println("Selecciona una opci√≥n:" + "\n1. \t Dar de alta alumnos." + "\n2. \t Dar de baja alumnos."
 				+ "\n3. \t Listar los alumnos." + "\n4. \t Modificar alumnos." + "\n5. \t Matricular alumnos."
-				+ "\n6. \t Dar de baja de una asignatura." + "\n7. \t Introducir calificaciÛn trimestral."
-				+ "\n8. \t Listar calificaciones de alumnos." + "\n9. \t Poner una falta (DÌa completo)."
-				+ "\n10. \t Poner una falta (en una sesiÛn)." + "\n11.  \t Pasar lista." + "\n12. \t Listar faltas."
+				+ "\n6. \t Dar de baja de una asignatura." + "\n7. \t Introducir calificaci√≥n trimestral."
+				+ "\n8. \t Listar calificaciones de alumnos." + "\n9. \t Poner una falta (D√≠a completo)."
+				+ "\n10. \t Poner una falta (en una sesi√≥n)." + "\n11.  \t Pasar lista." + "\n12. \t Listar faltas."
 				+ "\n13. \t Salir.");
 	}
 
-	// Autor: Luj·n
+	// Autor: Luj√°n
 	public static boolean repetir() {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
 
-		System.out.println("øQuieres repetir esta opciÛn?" + "\nEscribe Y si es sÌ y N si es no.");
+		System.out.println("¬øQuieres repetir esta opci√≥n?" + "\nEscribe Y si es s√≠ y N si es no.");
 		repetir = entrada.next().charAt(0);
 		
 		if(repetir=='Y'||repetir=='y') {
@@ -29,7 +29,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Juan MartÌn
+	// Autor: Juan Mart√≠n
 
 	public static int existe(ArrayList<Alumno> listaAlumnos, String dni) {
 		boolean comprobar = false;
@@ -70,17 +70,19 @@ public class ProgramaMain {
 					j = k;
 				}
 			}
+		}else {
+			throw new Exception("No existe el alumno. Debe darlo de alta primero.");
 		}
 		return j;
 	}
 
-	//MÈtodo est·tico 1
+	//M√©todo est√°tico 1
 	
 		public static void darDeAlta (ArrayList matriculados) {
 			
-			//OpciÛn 1 del men˙
+			//Opci√≥n 1 del men√∫
 			
-			//Autor: Santiago PÈrez
+			//Autor: Santiago P√©rez
 			
 			//Se recogen los datos del nuevo alumno del usuario
 			
@@ -103,13 +105,13 @@ public class ProgramaMain {
 			System.out.println ("Introduzca el nombre de alumno a matricular:");
 			nombre=entrada.nextLine();
 			
-			System.out.println ("Introduzca el telÈfono de alumno a matricular:");
+			System.out.println ("Introduzca el tel√©fono de alumno a matricular:");
 			telefono=entrada.nextLine();
 			
 			System.out.println ("Introduzca el email de alumno a matricular:");
 			email=entrada.nextLine();
 			
-			//Se crea un nuevo alumno usando el constructor, y los set para telÈfono y email
+			//Se crea un nuevo alumno usando el constructor, y los set para tel√©fono y email
 			Alumno nuevoAlumno = new Alumno (dni, nombre, apellidos);
 			nuevoAlumno.setTelefono(telefono);
 			nuevoAlumno.setEmail(email);
@@ -117,7 +119,7 @@ public class ProgramaMain {
 			//Se comprueba si el alumno ya existe
 			comprobacion=matriculados.contains(nuevoAlumno);
 			
-			//Si no existe se aÒade, si existe se muestra un mensaje de error
+			//Si no existe se a√±ade, si existe se muestra un mensaje de error
 			if (comprobacion==false) {
 				
 				matriculados.add(nuevoAlumno);
@@ -131,27 +133,27 @@ public class ProgramaMain {
 			
 		}
 			
-			//MÈtodo est·tico 2
+			//M√©todo est√°tico 2
 		
 			public static void darDeBaja (ArrayList matriculados) {
 				
-				//OpciÛn 2 del men˙
+				//Opci√≥n 2 del men√∫
 				
-				//Autor: Santiago PÈrez
+				//Autor: Santiago P√©rez
 				
 				Scanner entrada = new Scanner (System.in);
 				
 				int borrar;
 				int totalalumnos;
 				
-				//Se recoge el n˙mero del alumno a eliminar
-				System.out.println("Introduzca el n˙mero del alumno a eliminar:");
+				//Se recoge el n√∫mero del alumno a eliminar
+				System.out.println("Introduzca el n√∫mero del alumno a eliminar:");
 				listarAlumnos(matriculados);
 				borrar=entrada.nextInt();
 				borrar=borrar-1;
 				
-				//Se comprueba la longitud total del ArrayList de matriculados y que el n˙mero que
-				//se desea borrar estÈ dentro. Si lo est· se borra ese alumno, si no, se muestra
+				//Se comprueba la longitud total del ArrayList de matriculados y que el n√∫mero que
+				//se desea borrar est√© dentro. Si lo est√° se borra ese alumno, si no, se muestra
 				//mensaje de error
 				totalalumnos=matriculados.size();
 				
@@ -164,7 +166,7 @@ public class ProgramaMain {
 				else System.out.println("El alumno que desea borrar no existe");
 			}
 	
-	// Autor: Jose Alberto. MÈtodo est·tico 3
+	// Autor: Jose Alberto. M√©todo est√°tico 3
 	public static void listarAlumnos(ArrayList<Alumno> alumno) {
 		int num = alumno.size();
 		int cont = 0;
@@ -181,7 +183,7 @@ public class ProgramaMain {
 			String telefono = lista.getTelefeno();
 			cont += 1;
 			System.out.print(cont + ". Nombre: " + nombre + "\nApellido: " + apellido + "\nDNI: " + dni + "\nE-mail: "
-					+ email + "\nTelÈfono: " + telefono + "\n");
+					+ email + "\nTel√©fono: " + telefono + "\n");
 
 		}
 	}
@@ -277,7 +279,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Juan MartÌn, Metodo 5 Matricular alumnos.
+	// Autor: Juan Mart√≠n, Metodo 5 Matricular alumnos.
 
 	public static void Matricular(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) throws Exception {
 		if (matriculado(listaAlumnos, dni, asignatura) >= 0) {
@@ -324,7 +326,7 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Jose Alberto. MÈtodo 7: Introducir calificaciones.
+	// Autor: Jose Alberto. M√©todo 7: Introducir calificaciones.
 	public static void introducirCalificacion(ArrayList<Calificacion> notas, String dni, ArrayList<Alumno> alumno)
 			throws Exception {
 		Scanner entrada = new Scanner(System.in);
@@ -334,7 +336,7 @@ public class ProgramaMain {
 		existe = existe(alumno, dni);
 		if (existe > 0) {
 			try {
-				System.out.println("Introduzca la posiciÛn del alumno del cual desea introducir las calificaciones");
+				System.out.println("Introduzca la posici√≥n del alumno del cual desea introducir las calificaciones");
 				pos = entrada.nextInt();
 
 				entrada.next();
@@ -357,7 +359,7 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Juan MartÌn, Metodo 8 Listar calificaciones del alumno.
+	// Autor: Juan Mart√≠n, Metodo 8 Listar calificaciones del alumno.
 
 	public static void listarCalificaciones(ArrayList<Alumno> listaAlumnos) {
 		Scanner entrada = new Scanner(System.in);
@@ -368,10 +370,10 @@ public class ProgramaMain {
 
 		do {
 
-			System.out.println("Introduzca el n˙mero de lista del alumno que desea listar sus calificaciones");
+			System.out.println("Introduzca el n√∫mero de lista del alumno que desea listar sus calificaciones");
 			alumno = entrada.nextInt();
 			if (alumno < 1 || alumno > listaAlumnos.size()) {
-				System.out.println("Debe seleccionar el n˙mero de lista de un Alumno v·lido.");
+				System.out.println("Debe seleccionar el n√∫mero de lista de un Alumno v√°lido.");
 			}
 
 		} while (alumno < 1 || alumno > listaAlumnos.size());
@@ -391,7 +393,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Luj·n. MÈtodo para sacar el dÌa.
+	// Autor: Luj√°n. M√©todo para sacar el d√≠a.
 	public static int sacarDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
 		int exist, dia = 0;
 		exist = existe(listaAlumnos, dni);
@@ -403,7 +405,7 @@ public class ProgramaMain {
 		return dia;
 	}
 
-	// Autor: Luj·n. MÈtodo 9 Poner una falta (DÌa completo).
+	// Autor: Luj√°n. M√©todo 9 Poner una falta (D√≠a completo).
 	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
 		Scanner entrada = new Scanner(System.in);
 		int exist, dia = 0;
@@ -418,13 +420,13 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Luj·n. MÈtodo 10 Poner una falta (una sesiÛn).
+	// Autor: Luj√°n. M√©todo 10 Poner una falta (una sesi√≥n).
 	public static void ponerFaltaSesion(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) throws Exception {
 		Scanner entrada = new Scanner(System.in);
 		int sesion, exist, dia = 0;
 		exist = existe(listaAlumnos, dni);
 		if (exist > 0) {
-			System.out.println("Dime la sesiÛn:");
+			System.out.println("Dime la sesi√≥n:");
 			sesion = entrada.nextInt();
 			try {
 				sacarDia(listaAlumnos, dni, fechaDia);
@@ -436,9 +438,86 @@ public class ProgramaMain {
 			throw new Exception("Error: No existe el alumno.");
 		}
 	}
+	
+	// Autor Juanma. M√©todo 11 pasar lista//
+	public static void pasarLista (ArrayList<Alumno> listaAlumnos, Fecha fechaDia) {
+		
+		Scanner entrada = new Scanner(System.in);
+		
+		String apellidos, nombre, dni;
+		char respuesta;
+		int opcion;
+		
+		for (int i = 0; i < listaAlumnos.size(); i++) {
+				System.out.println("Has selecionado a :");
+				apellidos = listaAlumnos.get(i).getApellidos();
+				nombre = listaAlumnos.get(i).getNombre();
+				dni = listaAlumnos.get(i).getDni();
+				System.out.println(apellidos + ", " + nombre + ", " + dni);
+				
+				System.out.println("¬øHa faltado? Y para si N para no.");
+				respuesta = entrada.nextLine().charAt(0);
+				
+				if (respuesta == 'Y') {
+					System.out.println("1. \t Poner falta dia completo.");
+					System.out.println("2. \t Poner falta sesion");
+					System.out.println("3. \t salir");
+					opcion = entrada.nextInt();
+					entrada.nextLine();
+							
+					switch (opcion) {
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					}
+				}
+				
+				
+			
+			}
+				
+	}
 
-	// MÈtodo Main que llama a los dem·s mÈtodos. 
-	// Autor: Luj·n
+	// Autor Juanma. M√©todo 12 listar faltas//
+	public static void listarFaltas(ArrayList<Alumno> listaAlumnos) {
+		Scanner entrada = new Scanner(System.in);
+		int alumno, i;
+
+		String nombre, apellidos, dni;
+
+		listarAlumnos(listaAlumnos);
+
+		do {
+			System.out.println("Introduzca el n√∫mero de lista del alumno que desea listar sus calificaciones");
+			alumno = entrada.nextInt();
+			if (alumno < 1 || alumno > listaAlumnos.size()) {
+				System.out.println("Debe seleccionar el n√∫mero de lista de un Alumno v√°lido.");
+			}
+
+		} while (alumno < 1 || alumno > listaAlumnos.size());
+
+		System.out.println("Has selecionado a :");
+		apellidos = listaAlumnos.get(alumno - 1).getApellidos();
+		nombre = listaAlumnos.get(alumno - 1).getNombre();
+		dni = listaAlumnos.get(alumno - 1).getDni();
+		System.out.println(apellidos + ", " + nombre + ", " + dni);
+
+		System.out.println("Informe de faltas:");
+		for (i = 0; i < listaAlumnos.get(alumno - 1).getFaltas().size(); i++) {
+
+			(listaAlumnos.get(alumno - 1).getFaltas().get(i).getFechaDia()).imprimeFecha();
+			System.out.print(" : ");
+			(listaAlumnos.get(alumno - 1).getFaltas().get(i).getSesion()).imprimeHorario();
+		}
+
+	}
+
+
+	// M√©todo Main que llama a los dem√°s m√©todos. 
+	// Autor: Luj√°n
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
