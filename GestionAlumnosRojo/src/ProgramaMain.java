@@ -142,7 +142,8 @@ public class ProgramaMain {
 				int totalalumnos;
 				
 				//Se recoge el número del alumno a eliminar
-				System.out.println("Introduzca el número del alumno a eliminar");
+				System.out.println("Introduzca el número del alumno a eliminar:");
+				listarAlumnos(matriculados);
 				borrar=entrada.nextInt();
 				borrar=borrar-1;
 				
@@ -454,7 +455,7 @@ public class ProgramaMain {
 				break;
 			case 2:
 				do {
-
+					darDeBaja(listaAlumnos);
 				} while (repetir() == 'Y');
 				break;
 			case 3:
