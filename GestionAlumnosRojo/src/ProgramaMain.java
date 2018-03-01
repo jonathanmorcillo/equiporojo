@@ -16,14 +16,17 @@ public class ProgramaMain {
 	}
 
 	// Autor: Luján
-	public static char repetir() {
+	public static boolean repetir() {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
 
 		System.out.println("¿Quieres repetir esta opción?" + "\nEscribe Y si es sí y N si es no.");
 		repetir = entrada.next().charAt(0);
+		
+		if(repetir=='Y'||repetir=='y') {
+			return true;
+		}else return false;
 
-		return repetir;
 	}
 
 	// Autor: Juan Martín
@@ -434,6 +437,7 @@ public class ProgramaMain {
 		}
 	}
 
+	// Método Main que llama a los demás métodos. 
 	// Autor: Luján
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -451,12 +455,12 @@ public class ProgramaMain {
 			case 1:
 				do {
 					darDeAlta(listaAlumnos);
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 2:
 				do {
 					darDeBaja(listaAlumnos);
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 3:
 
@@ -465,45 +469,49 @@ public class ProgramaMain {
 				break;
 			case 4:
 				do {
-
-				} while (repetir() == 'Y');
+					try {
+						modificarAlumnos(listaAlumnos);
+					}catch(Exception ex) {
+						System.out.println(ex.getMessage());
+					}
+				} while (repetir() == true);
 				break;
 			case 5:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 6:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 7:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 8:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 9:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 10:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 11:
 				break;
 			case 12:
 				do {
 
-				} while (repetir() == 'Y');
+				} while (repetir() == true);
 				break;
 			case 13:
 				System.out.println("Saliendo del programa...");
