@@ -92,23 +92,18 @@ public class ProgramaMain {
 			
 			
 			System.out.println ("Introduzca el dni de alumno a matricular:");
-			entrada.nextLine();
 			dni=entrada.nextLine();
 			
 			System.out.println ("Introduzca los apellidos de alumno a matricular:");
-			entrada.nextLine();
 			apellidos=entrada.nextLine();
 			
 			System.out.println ("Introduzca el nombre de alumno a matricular:");
-			entrada.nextLine();
 			nombre=entrada.nextLine();
 			
 			System.out.println ("Introduzca el teléfono de alumno a matricular:");
-			entrada.nextLine();
 			telefono=entrada.nextLine();
 			
 			System.out.println ("Introduzca el email de alumno a matricular:");
-			entrada.nextLine();
 			email=entrada.nextLine();
 			
 			//Se crea un nuevo alumno usando el constructor, y los set para teléfono y email
@@ -454,7 +449,7 @@ public class ProgramaMain {
 			switch (menu) {
 			case 1:
 				do {
-
+					darDeAlta(listaAlumnos);
 				} while (repetir() == 'Y');
 				break;
 			case 2:
