@@ -51,7 +51,7 @@ public class ProgramaMain {
 	}
 
 	// Autor: Jonathan Morcillo
-	public static int matriculado(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) {
+	public static int matriculado(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) throws Exception {
 
 		// Creamos la variable para el bucle y otras 2 inicializadas en negativo para
 		// saber si encontramos al alumno y la asignatura
@@ -281,7 +281,7 @@ public class ProgramaMain {
 
 	// Autor: Juan Mart√≠n, Metodo 5 Matricular alumnos.
 
-	public static void Matricular(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) throws Exception {
+	public static void matricular(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) throws Exception {
 		if (matriculado(listaAlumnos, dni, asignatura) >= 0) {
 			System.out.println("Se informa que el alumno " + dni + " ya se encuentra matriculado.");
 		} else {
@@ -359,7 +359,7 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Juan Mart√≠n, Metodo 8 Listar calificaciones del alumno.
+	// Autor: Juan MartÌn, Metodo 8 Listar calificaciones del alumno.
 
 	public static void listarCalificaciones(ArrayList<Alumno> listaAlumnos) {
 		Scanner entrada = new Scanner(System.in);
@@ -370,10 +370,10 @@ public class ProgramaMain {
 
 		do {
 
-			System.out.println("Introduzca el n√∫mero de lista del alumno que desea listar sus calificaciones");
+			System.out.println("Introduzca el n˙mero de lista del alumno que desea listar sus calificaciones");
 			alumno = entrada.nextInt();
 			if (alumno < 1 || alumno > listaAlumnos.size()) {
-				System.out.println("Debe seleccionar el n√∫mero de lista de un Alumno v√°lido.");
+				System.out.println("Debe seleccionar el n√∫mero de lista de un Alumno v·lido.");
 			}
 
 		} while (alumno < 1 || alumno > listaAlumnos.size());
@@ -394,8 +394,22 @@ public class ProgramaMain {
 	}
 
 	// Autor: Luj√°n. M√©todo para sacar el d√≠a.
-	public static int sacarDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
-		int exist, dia = 0;
+	public static int sacarDia(ArrayList<Alumno> listaAlumnos, String dni) {
+		Scanner entrada= new Scanner(System.in);
+		int exist;
+		int dia, mes, agno;
+		System.out.println("Dime el dÌa:");
+		dia=entrada.nextInt();
+		System.out.println("Dime el mes:");
+		mes=entrada.nextInt();
+		System.out.println("Dime el aÒo:");
+		agno=entrada.nextInt();
+		
+		try {
+			Fecha fechaDia = new Fecha(dia,mes,agno);
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		exist = existe(listaAlumnos, dni);
 		for (int i = 0; i < listaAlumnos.get(exist).getFaltas().size(); i++) {
 			if (listaAlumnos.get(exist).getFaltas().get(i).getFechaDia().equals(fechaDia)) {
@@ -405,15 +419,16 @@ public class ProgramaMain {
 		return dia;
 	}
 
-	// Autor: Luj√°n. M√©todo 9 Poner una falta (D√≠a completo).
-	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) {
+	// Autor: Luj·n. MÈtodo 9 Poner una falta (DÌa completo).
+	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos, String dni) {
 		Scanner entrada = new Scanner(System.in);
-		int exist, dia = 0;
+
+		
+		int exist;
 		exist = existe(listaAlumnos, dni);
 		if (exist > 0) {
 			try {
-				sacarDia(listaAlumnos, dni, fechaDia);
-				listaAlumnos.get(exist).getFaltas().get(dia).getSesion().faltaDiaEntero();
+				listaAlumnos.get(exist).getFaltas().get(sacarDia(listaAlumnos, dni)).getSesion().faltaDiaEntero();
 			} catch (Exception excep) {
 				System.out.println(excep.getMessage());
 			}
@@ -426,7 +441,7 @@ public class ProgramaMain {
 		int sesion, exist, dia = 0;
 		exist = existe(listaAlumnos, dni);
 		if (exist > 0) {
-			System.out.println("Dime la sesi√≥n:");
+			System.out.println("Dime la sesiÛn:");
 			sesion = entrada.nextInt();
 			try {
 				sacarDia(listaAlumnos, dni, fechaDia);
@@ -494,7 +509,7 @@ public class ProgramaMain {
 			System.out.println("Introduzca el n√∫mero de lista del alumno que desea listar sus calificaciones");
 			alumno = entrada.nextInt();
 			if (alumno < 1 || alumno > listaAlumnos.size()) {
-				System.out.println("Debe seleccionar el n√∫mero de lista de un Alumno v√°lido.");
+				System.out.println("Debe seleccionar el n˙mero de lista de un Alumno v√°lido.");
 			}
 
 		} while (alumno < 1 || alumno > listaAlumnos.size());
@@ -547,22 +562,19 @@ public class ProgramaMain {
 
 				break;
 			case 4:
-				do {
-					try {
-						modificarAlumnos(listaAlumnos);
-					}catch(Exception ex) {
-						System.out.println(ex.getMessage());
-					}
-				} while (repetir() == true);
+				try {
+					modificarAlumnos(listaAlumnos);
+				}catch(Exception ex) {
+					System.out.println(ex.getMessage());
+				}
 				break;
 			case 5:
 				do {
-
 				} while (repetir() == true);
 				break;
 			case 6:
 				do {
-
+					
 				} while (repetir() == true);
 				break;
 			case 7:
