@@ -603,11 +603,20 @@ public class ProgramaMain {
 				break;
 			case 5:
 				do {
+					try{
+						matricular(listaAlumnos);
+					}catch(Exception ex){
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 6:
 				do {
-					
+					try{
+						darBajaAsignatura(listaAlumnos);
+					}catch(Exception ex){
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 7:
@@ -642,7 +651,7 @@ public class ProgramaMain {
 				break;
 			case 12:
 				do {
-
+					
 				} while (repetir() == true);
 				break;
 			case 13:
