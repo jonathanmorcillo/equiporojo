@@ -53,28 +53,32 @@ public class ProgramaMain {
 	// Autor: Jonathan Morcillo
 	public static int matriculado(ArrayList<Alumno> listaAlumnos, String dni, String asignatura) throws Exception {
 
-		// Creamos la variable para el bucle y otras 2 inicializadas en negativo para
+		// Creamos la variable para el bucle y otras 2 inicializadas en negativo
+		// para
 		// saber si encontramos al alumno y la asignatura
 		int k, j = -1, exist = -1;
 
-		// Comprobamos si existe el alumno y si es asi procedemos a buscar la asignatura
+		// Comprobamos si existe el alumno y si es asi procedemos a buscar la
+		// asignatura
 		exist = existe(listaAlumnos, dni);
-		if (exist != -1) {
+		if (exist == -1) {
+			throw new Exception("No existe el alumno. Debe darlo de alta primero.");
+		}
 			for (k = 0; k < listaAlumnos.get(exist).getNotas().size(); k++) {
 
-				// Comprobamos si esta alumno esta matriculado en la asignatura y si es asi
-				// ponemos la variable j al mismo valor de la posicion de esta asignatura puesto
+				// Comprobamos si esta alumno esta matriculado en la asignatura
+				// y si es asi
+				// ponemos la variable j al mismo valor de la posicion de esta
+				// asignatura puesto
 				// que sera la variable que devolveremos
 
 				if (listaAlumnos.get(exist).getNotas().get(k).getAsignatura().equals(asignatura)) {
 					j = k;
 				}
 			}
-		}else {
-			throw new Exception("No existe el alumno. Debe darlo de alta primero.");
+			return j;
 		}
-		return j;
-	}
+		
 
 	//MÃ©todo estÃ¡tico 1
 	
