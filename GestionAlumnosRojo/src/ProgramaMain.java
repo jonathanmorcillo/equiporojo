@@ -436,16 +436,15 @@ public class ProgramaMain {
 	}
 
 	// Autor: Luján. Método 10 Poner una falta (una sesión).
-	public static void ponerFaltaSesion(ArrayList<Alumno> listaAlumnos, String dni, Fecha fechaDia) throws Exception {
+	public static void ponerFaltaSesion(ArrayList<Alumno> listaAlumnos, String dni) throws Exception {
 		Scanner entrada = new Scanner(System.in);
-		int sesion, exist, dia = 0;
+		int sesion, exist;
 		exist = existe(listaAlumnos, dni);
 		if (exist > 0) {
 			System.out.println("Dime la sesi�n:");
 			sesion = entrada.nextInt();
 			try {
-				sacarDia(listaAlumnos, dni, fechaDia);
-				listaAlumnos.get(exist).getFaltas().get(dia).getSesion().faltaHora(sesion);
+				listaAlumnos.get(exist).getFaltas().get(sacarDia(listaAlumnos, dni)).getSesion().faltaHora(sesion);
 			} catch (Exception excep) {
 				System.out.println(excep.getMessage());
 			}
