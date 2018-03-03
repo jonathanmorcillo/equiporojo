@@ -520,7 +520,6 @@ public class ProgramaMain {
 						break;
 					default:
 						throw new Exception ("Solo puede elegir una opcion valida.");
-						break;
 					}
 				}
 				
@@ -564,8 +563,8 @@ public class ProgramaMain {
 
 	}
 
-	// MÃ©todo Main que llama a los demÃ¡s mÃ©todos. 
-	// Autor: LujÃ¡n
+	// Método Main que llama a los demás métodos. 
+	// Autor: Luján
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -651,7 +650,11 @@ public class ProgramaMain {
 				break;
 			case 12:
 				do {
-					
+					try{
+						listarFaltas(listaAlumnos);
+					}catch(Exception ex){
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 13:
