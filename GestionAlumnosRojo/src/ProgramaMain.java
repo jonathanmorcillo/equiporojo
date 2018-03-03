@@ -80,112 +80,115 @@ public class ProgramaMain {
 		}
 		
 
-	//Método estático 1
-	
-		public static void darDeAlta (ArrayList matriculados) {
-			
-			//Opción 1 del menú
-			
-			//Autor: Santiago Pérez
-			
-			//Se recogen los datos del nuevo alumno del usuario
-			
-			Scanner entrada = new Scanner (System.in);
-			
+	// Método estático 1
+
+		public static void darDeAlta(ArrayList matriculados) throws Exception {
+
+			// Opción 1 del menú
+
+			// Autor: Santiago Pérez
+
+			// Se recogen los datos del nuevo alumno del usuario
+
+			Scanner entrada = new Scanner(System.in);
+
 			String dni;
 			String nombre;
 			String apellidos;
 			String telefono;
 			String email;
-			boolean comprobacion=false;
-			
-			
-			System.out.println ("Introduzca el dni de alumno a matricular:");
-			dni=entrada.nextLine();
-			
-			System.out.println ("Introduzca los apellidos de alumno a matricular:");
-			apellidos=entrada.nextLine();
-			
-			System.out.println ("Introduzca el nombre de alumno a matricular:");
-			nombre=entrada.nextLine();
-			
-			System.out.println ("Introduzca el teléfono de alumno a matricular:");
-			telefono=entrada.nextLine();
-			
-			System.out.println ("Introduzca el email de alumno a matricular:");
-			email=entrada.nextLine();
-			
-			//Se crea un nuevo alumno usando el constructor, y los set para teléfono y email
-			Alumno nuevoAlumno = new Alumno (dni, nombre, apellidos);
+			boolean comprobacion = false;
+
+			System.out.println("Introduzca el dni de alumno a matricular:");
+			dni = entrada.nextLine();
+
+			System.out.println("Introduzca los apellidos de alumno a matricular:");
+			apellidos = entrada.nextLine();
+
+			System.out.println("Introduzca el nombre de alumno a matricular:");
+			nombre = entrada.nextLine();
+
+			System.out.println("Introduzca el teléfono de alumno a matricular:");
+			telefono = entrada.nextLine();
+
+			System.out.println("Introduzca el email de alumno a matricular:");
+			email = entrada.nextLine();
+
+			// Se crea un nuevo alumno usando el constructor, y los set para teléfono y
+			// email
+			Alumno nuevoAlumno = new Alumno(dni, nombre, apellidos);
 			nuevoAlumno.setTelefono(telefono);
 			nuevoAlumno.setEmail(email);
-			
-			//Se comprueba si el alumno ya existe
-			comprobacion=matriculados.contains(nuevoAlumno);
-			
-			//Si no existe se añade, si existe se muestra un mensaje de error
-			if (comprobacion==false) {
-				
+
+			// Se comprueba si el alumno ya existe
+			int existe = existe(matriculados, dni);
+
+			if (existe != -1) {// Si no existe se añade, si existe se muestra un mensaje de error
+				throw new Exception("Ya existe el alumno");
+			} else {
 				matriculados.add(nuevoAlumno);
-				
 			}
-			
-			else {
-				
-				System.out.println("El alumno ya existe.");
-			}
-			
+
 		}
-			
-			//Método estático 2
-		
-			public static void darDeBaja (ArrayList matriculados) {
-				
-				//Opción 2 del menú
-				
-				//Autor: Santiago Pérez
-				
-				Scanner entrada = new Scanner (System.in);
-				
-				int borrar;
-				int totalalumnos;
-				
-				//Se recoge el número del alumno a eliminar
-				System.out.println("Introduzca el número del alumno a eliminar:");
-				listarAlumnos(matriculados);
-				borrar=entrada.nextInt();
-				borrar=borrar-1;
-				
-				//Se comprueba la longitud total del ArrayList de matriculados y que el número que
-				//se desea borrar está dentro. Si lo está se borra ese alumno, si no, se muestra
-				//mensaje de error
-				totalalumnos=matriculados.size();
-				
-				if (borrar>=0&&borrar<=totalalumnos) {
-				
+
+		// Método estático 2
+
+		public static void darDeBaja(ArrayList matriculados) throws Exception {
+
+			// Opción 2 del menú
+
+			// Autor: Santiago Pérez
+
+			Scanner entrada = new Scanner(System.in);
+
+			int borrar;
+			int totalalumnos;
+			String dni;
+
+			// Se recoge el número del alumno a eliminar
+			System.out.println("Introduzca el número del alumno a eliminar:");
+			listarAlumnos(matriculados);
+			borrar = entrada.nextInt();
+			borrar = borrar - 1;
+
+			// Se comprueba la longitud total del ArrayList de matriculados y que el número
+			// que
+			// se desea borrar esté dentro. Si lo está se borra ese alumno, si no, se
+			// muestra
+			// mensaje de error
+			totalalumnos = matriculados.size();
+
+			if (borrar >= 0 && borrar <= totalalumnos) {
+
 				matriculados.remove(borrar);
-				
-				}
-				
-				else System.out.println("El alumno que desea borrar no existe");
+
+			} else {
+				throw new Exception("El alumno que desea borrar no existe");
 			}
+		}
 	
 	// Autor: Jose Alberto. Método estático 3
 	public static void listarAlumnos(ArrayList<Alumno> alumno) {
+		//Obtenemos el tama�o del ArrayList de alumno y lo guardamos en una variable
 		int num = alumno.size();
 		int cont = 0;
+		//Comprobamos si existen alumnos dentro del ArrayList. En caso de no haberlos, saltar� el mensaje
 		if (num == 0) {
 			System.out.println("No hay alumnos");
 		}
+		//Creamos un iterador para poder mostrar los valores dentro del ArrayList de alumno
 		Iterator<Alumno> iterador = alumno.iterator();
 		while (iterador.hasNext()) {
 			Alumno lista = iterador.next();
+			//Creamos distintas variables para cada dato del alumno y hacemos uso de los m�todos 
+			//'get' para obtener esos datos y as� poder mostrarlos
 			String nombre = lista.getNombre();
 			String apellido = lista.getApellidos();
 			String dni = lista.getDni();
 			String email = lista.getEmail();
 			String telefono = lista.getTelefeno();
 			cont += 1;
+			//Mostramos por pantalla los datos de cada alumno
 			System.out.print(cont + ". Nombre: " + nombre + "\nApellido: " + apellido + "\nDNI: " + dni + "\nE-mail: "
 					+ email + "\nTeléfono: " + telefono + "\n");
 
@@ -337,37 +340,44 @@ public class ProgramaMain {
 	}
 
 	// Autor: Jose Alberto. Método 7: Introducir calificaciones.
-	public static void introducirCalificacion(ArrayList<Calificacion> notas, String dni, ArrayList<Alumno> alumno)
-			throws Exception {
-		Scanner entrada = new Scanner(System.in);
-		String nota, asignatura;
-		int existe, pos = -1;
+		public static void introducirCalificacion(String dni, ArrayList<Alumno> alumno)
+				throws Exception {
+			Scanner entrada = new Scanner(System.in);
+			//Creamos las variables
+			String nota, asignatura;
+			int existe, pos = -1;
+			//Llamamos al m�todo 'existe' para comprobar si existe el alumno
+			existe = existe(alumno, dni);
+			//En caso de no existir, saltar� una excepci�n
+			if (existe == -1) {
+				throw new Exception("No existe el alumno");
+			}
+			//En caso de que el alumno exista, continuar� el m�todo
+			if (existe > 0) {
+				try {
+					//Introducimos la posici�n del alumno
+					System.out.println("Introduzca la posici�n del alumno del cual desea introducir las calificaciones");
+					pos = entrada.nextInt();
+					//Limpiamos el buffer
+					entrada.next();
+					//Introducimos la asignatura a la cual vamos a asignarle una calificaci�n
+					System.out.println("Introduzca la asignatura que va a calificar");
+					asignatura = entrada.nextLine();
+					//Creamos un nuevo objeto calificaci�n para guardar la nota de la asignatura
+					Calificacion calificacion = new Calificacion(asignatura);
+					//Introducimos la nota y la asignamos en el objeto 'calificaci�n'
+					System.out.println("Introduzca la nota obtenida");
+					nota = entrada.nextLine();
 
-		existe = existe(alumno, dni);
-		if (existe > 0) {
-			try {
-				System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
-				pos = entrada.nextInt();
-
-				entrada.next();
-
-				System.out.println("Introduzca la asignatura que va a calificar");
-				asignatura = entrada.nextLine();
-
-				Calificacion calificacion = new Calificacion(asignatura);
-
-				System.out.println("Introduzca la nota obtenida");
-				nota = entrada.nextLine();
-
-				calificacion.setNota(nota);
-
-				alumno.get(pos).getNotas().add(calificacion);
-
-			} catch (Exception except) {
-				System.out.println(except.getMessage());
+					calificacion.setNota(nota);
+					//Exploramos el ArrayList de alumno y obtenemos la posici�n y las notas para a�adirle la calificaci�n
+					alumno.get(pos).getNotas().add(calificacion);
+					
+				} catch (Exception except) {//En caso de que se introduzca alg�n dato de manera incorrecta, saltar� la excepci�n
+					System.out.println(except.getMessage());
+				}
 			}
 		}
-	}
 
 	// Autor: Juan Martín, Método 8 Listar calificaciones del alumno.
 
@@ -607,12 +617,20 @@ public class ProgramaMain {
 			switch (menu) {
 			case 1:
 				do {
-					darDeAlta(listaAlumnos);
+					try {
+						darDeAlta(listaAlumnos);
+					}catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 2:
 				do {
-					darDeBaja(listaAlumnos);
+					try {
+						darDeBaja(listaAlumnos);
+					}catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 3:
