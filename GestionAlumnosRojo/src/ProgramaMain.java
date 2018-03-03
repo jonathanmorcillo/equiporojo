@@ -2,25 +2,25 @@ import java.util.*;
 
 public class ProgramaMain {
 
-	// Autor: Luján
+	// Autor: LujÃ¡n
 	public static void mostrarMenu() {
 		System.out.println("********************************");
-		System.out.println("***********   Menú   ***********");
+		System.out.println("***********   MenÃº   ***********");
 		System.out.println("********************************");
-		System.out.println("Selecciona una opción:" + "\n1.  Dar de alta alumnos." + "\n2.  Dar de baja alumnos."
+		System.out.println("Selecciona una opciÃ³n:" + "\n1.  Dar de alta alumnos." + "\n2.  Dar de baja alumnos."
 				+ "\n3.  Listar los alumnos." + "\n4.  Modificar alumnos." + "\n5.  Matricular alumnos."
-				+ "\n6.  Dar de baja de una asignatura." + "\n7.  Introducir calificación trimestral."
-				+ "\n8.  Listar calificaciones de alumnos." + "\n9.  Poner una falta (Día completo)."
-				+ "\n10. Poner una falta (en una sesión)." + "\n11. Pasar lista." + "\n12. Listar faltas."
+				+ "\n6.  Dar de baja de una asignatura." + "\n7.  Introducir calificaciÃ³n trimestral."
+				+ "\n8.  Listar calificaciones de alumnos." + "\n9.  Poner una falta (DÃ­a completo)."
+				+ "\n10. Poner una falta (en una sesiÃ³n)." + "\n11. Pasar lista." + "\n12. Listar faltas."
 				+ "\n13. Salir.");
 	}
 
-	// Autor: Luján
+	// Autor: LujÃ¡n
 	public static boolean repetir() {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
 
-		System.out.println("¿Quieres repetir esta opción?" + "\nEscribe Y si es sí y N si es no.");
+		System.out.println("Â¿Quieres repetir esta opciÃ³n?" + "\nEscribe Y si es sÃ­ y N si es no.");
 		repetir = entrada.next().charAt(0);
 		
 		if(repetir=='Y'||repetir=='y') {
@@ -29,7 +29,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Juan Martín
+	// Autor: Juan MartÃ­n
 
 	public static int existe(ArrayList<Alumno> listaAlumnos, String dni) {
 		boolean comprobar = false;
@@ -80,13 +80,13 @@ public class ProgramaMain {
 		}
 		
 
-	// Método estático 1
+	// MÃ©todo estÃ¡tico 1
 
 		public static void darDeAlta(ArrayList matriculados) throws Exception {
 
-			// Opción 1 del menú
+			// OpciÃ³n 1 del menÃº
 
-			// Autor: Santiago Pérez
+			// Autor: Santiago PÃ©rez
 
 			// Se recogen los datos del nuevo alumno del usuario
 
@@ -108,13 +108,13 @@ public class ProgramaMain {
 			System.out.println("Introduzca el nombre de alumno a matricular:");
 			nombre = entrada.nextLine();
 
-			System.out.println("Introduzca el teléfono de alumno a matricular:");
+			System.out.println("Introduzca el telÃ©fono de alumno a matricular:");
 			telefono = entrada.nextLine();
 
 			System.out.println("Introduzca el email de alumno a matricular:");
 			email = entrada.nextLine();
 
-			// Se crea un nuevo alumno usando el constructor, y los set para teléfono y
+			// Se crea un nuevo alumno usando el constructor, y los set para telÃ©fono y
 			// email
 			Alumno nuevoAlumno = new Alumno(dni, nombre, apellidos);
 			nuevoAlumno.setTelefono(telefono);
@@ -123,7 +123,7 @@ public class ProgramaMain {
 			// Se comprueba si el alumno ya existe
 			int existe = existe(matriculados, dni);
 
-			if (existe != -1) {// Si no existe se añade, si existe se muestra un mensaje de error
+			if (existe != -1) {// Si no existe se aÃ±ade, si existe se muestra un mensaje de error
 				throw new Exception("Ya existe el alumno");
 			} else {
 				matriculados.add(nuevoAlumno);
@@ -131,13 +131,13 @@ public class ProgramaMain {
 
 		}
 
-		// Método estático 2
+		// MÃ©todo estÃ¡tico 2
 
 		public static void darDeBaja(ArrayList matriculados) throws Exception {
 
-			// Opción 2 del menú
+			// OpciÃ³n 2 del menÃº
 
-			// Autor: Santiago Pérez
+			// Autor: Santiago PÃ©rez
 
 			Scanner entrada = new Scanner(System.in);
 
@@ -145,15 +145,15 @@ public class ProgramaMain {
 			int totalalumnos;
 			String dni;
 
-			// Se recoge el número del alumno a eliminar
-			System.out.println("Introduzca el número del alumno a eliminar:");
+			// Se recoge el nÃºmero del alumno a eliminar
+			System.out.println("Introduzca el nÃºmero del alumno a eliminar:");
 			listarAlumnos(matriculados);
 			borrar = entrada.nextInt();
 			borrar = borrar - 1;
 
-			// Se comprueba la longitud total del ArrayList de matriculados y que el número
+			// Se comprueba la longitud total del ArrayList de matriculados y que el nÃºmero
 			// que
-			// se desea borrar esté dentro. Si lo está se borra ese alumno, si no, se
+			// se desea borrar estÃ© dentro. Si lo estÃ¡ se borra ese alumno, si no, se
 			// muestra
 			// mensaje de error
 			totalalumnos = matriculados.size();
@@ -167,12 +167,12 @@ public class ProgramaMain {
 			}
 		}
 	
-	// Autor: Jose Alberto. Método estático 3
+	// Autor: Jose Alberto. MÃ©todo estÃ¡tico 3
 	public static void listarAlumnos(ArrayList<Alumno> alumno) {
-		//Obtenemos el tama�o del ArrayList de alumno y lo guardamos en una variable
+		//Obtenemos el tamaño del ArrayList de alumno y lo guardamos en una variable
 		int num = alumno.size();
 		int cont = 0;
-		//Comprobamos si existen alumnos dentro del ArrayList. En caso de no haberlos, saltar� el mensaje
+		//Comprobamos si existen alumnos dentro del ArrayList. En caso de no haberlos, saltará el mensaje
 		if (num == 0) {
 			System.out.println("No hay alumnos");
 		}
@@ -180,8 +180,8 @@ public class ProgramaMain {
 		Iterator<Alumno> iterador = alumno.iterator();
 		while (iterador.hasNext()) {
 			Alumno lista = iterador.next();
-			//Creamos distintas variables para cada dato del alumno y hacemos uso de los m�todos 
-			//'get' para obtener esos datos y as� poder mostrarlos
+			//Creamos distintas variables para cada dato del alumno y hacemos uso de los métodos 
+			//'get' para obtener esos datos y así poder mostrarlos
 			String nombre = lista.getNombre();
 			String apellido = lista.getApellidos();
 			String dni = lista.getDni();
@@ -190,12 +190,12 @@ public class ProgramaMain {
 			cont += 1;
 			//Mostramos por pantalla los datos de cada alumno
 			System.out.print(cont + ". Nombre: " + nombre + "\nApellido: " + apellido + "\nDNI: " + dni + "\nE-mail: "
-					+ email + "\nTeléfono: " + telefono + "\n");
+					+ email + "\nTelÃ©fono: " + telefono + "\n");
 
 		}
 	}
 
-	// Autor: Jonathan Morcillo ; Método 4
+	// Autor: Jonathan Morcillo ; MÃ©todo 4
 	public static void modificarAlumnos(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
 		int opcion;
@@ -286,7 +286,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Juan Martín, Metodo 5 Matricular alumnos.
+	// Autor: Juan MartÃ­n, Metodo 5 Matricular alumnos.
 
 	public static void matricular(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
@@ -304,7 +304,7 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Jonathan Morcillo ; Método 6
+	// Autor: Jonathan Morcillo ; MÃ©todo 6
 	public static void darBajaAsignatura(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
 
@@ -332,54 +332,57 @@ public class ProgramaMain {
 
 			} else {
 				System.out.println("El alumno " + listaAlumnos.get(j).getNombre() + " "
-						+ listaAlumnos.get(j).getApellidos() + " no está registrado en dicha asignatura");
+						+ listaAlumnos.get(j).getApellidos() + " no estÃ¡ registrado en dicha asignatura");
 			}
 		} else {
 			throw new Exception("El alumno no existe");
 		}
 	}
 
-	// Autor: Jose Alberto. Método 7: Introducir calificaciones.
-		public static void introducirCalificacion(String dni, ArrayList<Alumno> alumno)
+	// Autor: Jose Alberto. MÃ©todo 7: Introducir calificaciones.
+		public static void introducirCalificacion(ArrayList<Alumno> alumno)
 				throws Exception {
 			Scanner entrada = new Scanner(System.in);
 			//Creamos las variables
-			String nota, asignatura;
+			String nota, asignatura,dni;
 			int existe, pos = -1;
-			//Llamamos al m�todo 'existe' para comprobar si existe el alumno
+			//Pedimos DNI
+			System.out.println("Dime el D.N.I del alumno:");
+			dni=entrada.nextLine();
+			//Llamamos al método 'existe' para comprobar si existe el alumno
 			existe = existe(alumno, dni);
-			//En caso de no existir, saltar� una excepci�n
+			//En caso de no existir, saltará una excepción
 			if (existe == -1) {
 				throw new Exception("No existe el alumno");
 			}
-			//En caso de que el alumno exista, continuar� el m�todo
+			//En caso de que el alumno exista, continuará el método
 			if (existe > 0) {
 				try {
-					//Introducimos la posici�n del alumno
-					System.out.println("Introduzca la posici�n del alumno del cual desea introducir las calificaciones");
+					//Introducimos la posición del alumno
+					System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
 					pos = entrada.nextInt();
 					//Limpiamos el buffer
 					entrada.next();
-					//Introducimos la asignatura a la cual vamos a asignarle una calificaci�n
+					//Introducimos la asignatura a la cual vamos a asignarle una calificación
 					System.out.println("Introduzca la asignatura que va a calificar");
 					asignatura = entrada.nextLine();
-					//Creamos un nuevo objeto calificaci�n para guardar la nota de la asignatura
+					//Creamos un nuevo objeto calificación para guardar la nota de la asignatura
 					Calificacion calificacion = new Calificacion(asignatura);
-					//Introducimos la nota y la asignamos en el objeto 'calificaci�n'
+					//Introducimos la nota y la asignamos en el objeto 'calificación'
 					System.out.println("Introduzca la nota obtenida");
 					nota = entrada.nextLine();
 
 					calificacion.setNota(nota);
-					//Exploramos el ArrayList de alumno y obtenemos la posici�n y las notas para a�adirle la calificaci�n
+					//Exploramos el ArrayList de alumno y obtenemos la posición y las notas para añadirle la calificación
 					alumno.get(pos).getNotas().add(calificacion);
 					
-				} catch (Exception except) {//En caso de que se introduzca alg�n dato de manera incorrecta, saltar� la excepci�n
+				} catch (Exception except) {//En caso de que se introduzca algún dato de manera incorrecta, saltará la excepción
 					System.out.println(except.getMessage());
 				}
 			}
 		}
 
-	// Autor: Juan Martín, Método 8 Listar calificaciones del alumno.
+	// Autor: Juan MartÃ­n, MÃ©todo 8 Listar calificaciones del alumno.
 
 	public static void listarCalificaciones(ArrayList<Alumno> listaAlumnos) {
 		Scanner entrada = new Scanner(System.in);
@@ -390,10 +393,10 @@ public class ProgramaMain {
 
 		do {
 
-			System.out.println("Introduzca el número de lista del alumno que desea listar sus calificaciones");
+			System.out.println("Introduzca el nÃºmero de lista del alumno que desea listar sus calificaciones");
 			alumno = entrada.nextInt();
 			if (alumno < 1 || alumno > listaAlumnos.size()) {
-				System.out.println("Debe seleccionar el número de lista de un Alumno válido.");
+				System.out.println("Debe seleccionar el nÃºmero de lista de un Alumno vÃ¡lido.");
 			}
 
 		} while (alumno < 1 || alumno > listaAlumnos.size());
@@ -404,7 +407,7 @@ public class ProgramaMain {
 		dni = listaAlumnos.get(alumno - 1).getDni();
 		System.out.println(apellidos + ", " + nombre + ", " + dni);
 
-		System.out.println("Boletín de notas");
+		System.out.println("BoletÃ­n de notas");
 		for (i = 0; i < listaAlumnos.get(alumno - 1).getNotas().size(); i++) {
 
 			System.out.println("Asignatura : " + listaAlumnos.get(alumno - 1).getNotas().get(i).getAsignatura()
@@ -413,7 +416,7 @@ public class ProgramaMain {
 
 	}
 
-	// Autor: Luján. Método 9 Poner una falta (Día completo).
+	// Autor: LujÃ¡n. MÃ©todo 9 Poner una falta (DÃ­a completo).
 	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos) throws Exception{
 		Scanner entrada = new Scanner(System.in);
 
@@ -427,21 +430,21 @@ public class ProgramaMain {
 		}
 		//Si existe el alumno pedimos la fecha para poner la falta	
 		int dia, mes, agno;
-		System.out.println("Dime el día:");
+		System.out.println("Dime el dÃ­a:");
 		dia=entrada.nextInt();
 		System.out.println("Dime el mes:");
 		mes=entrada.nextInt();
-		System.out.println("Dime el año:");
+		System.out.println("Dime el aÃ±o:");
 		agno=entrada.nextInt();
 	
 		DiaClase diaClase = new DiaClase(new Fecha(dia,mes,agno));
 		
 		int posicion = listaAlumnos.get(exist).getFaltas().indexOf(diaClase);
 		
-		//Si existe la fecha, ponemos faltas en el día directamente.
+		//Si existe la fecha, ponemos faltas en el dÃ­a directamente.
 		if(posicion != -1){
 			listaAlumnos.get(exist).getFaltas().get(posicion).getSesion().faltaDiaEntero();
-		}else{//Si no, ponemos las faltas y lo añadimos al ArrayList.
+		}else{//Si no, ponemos las faltas y lo aÃ±adimos al ArrayList.
 			diaClase.getSesion().faltaDiaEntero();
 			listaAlumnos.get(exist).getFaltas().add(diaClase);
 		}
@@ -450,7 +453,7 @@ public class ProgramaMain {
 								 
 	}
 
-	// Autor: Luján. Método 10 Poner una falta (una sesión).
+	// Autor: LujÃ¡n. MÃ©todo 10 Poner una falta (una sesiÃ³n).
 	public static void ponerFaltaSesion(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
 		String dni;
@@ -464,13 +467,13 @@ public class ProgramaMain {
 		}
 		//Si existe el alumno pedimos la fecha para poner la falta	
 		int dia, mes, agno;
-		System.out.println("Dime el día:");
+		System.out.println("Dime el dÃ­a:");
 		dia=entrada.nextInt();
 		System.out.println("Dime el mes:");
 		mes=entrada.nextInt();
-		System.out.println("Dime el año:");
+		System.out.println("Dime el aÃ±o:");
 		agno=entrada.nextInt();
-		System.out.println("Dime la sesión:");
+		System.out.println("Dime la sesiÃ³n:");
 		sesion=entrada.nextInt();
 	
 		DiaClase diaClase = new DiaClase(new Fecha(dia,mes,agno));
@@ -480,15 +483,15 @@ public class ProgramaMain {
 		//Si existe la fecha, ponemos falta en la sesion directamente.
 		if(posicion != -1){
 			listaAlumnos.get(exist).getFaltas().get(posicion).getSesion().faltaHora(sesion);
-		}else{//Si no, ponemos la falta y lo añadimos al ArrayList.
+		}else{//Si no, ponemos la falta y lo aÃ±adimos al ArrayList.
 			diaClase.getSesion().faltaHora(sesion);
 			listaAlumnos.get(exist).getFaltas().add(diaClase);
 		}
-		System.out.println("Se le ha puesto falta en la sesión nº" + sesion + " y esta fecha: ");
+		System.out.println("Se le ha puesto falta en la sesiÃ³n nÂº" + sesion + " y esta fecha: ");
 		diaClase.getFechaDia().imprimeFecha();
 	}
 	
-// Autor Juanma. Método 11 pasar lista//
+// Autor Juanma. MÃ©todo 11 pasar lista//
 	public static void pasarLista(ArrayList<Alumno> listaAlumnos) throws Exception {
 
 		Scanner entrada = new Scanner(System.in);
@@ -497,11 +500,11 @@ public class ProgramaMain {
 		char respuesta;
 		int opcion, dia, mes, agno, posicion;
 
-		System.out.println("Dime el día:");
+		System.out.println("Dime el dÃ­a:");
 		dia = entrada.nextInt();
 		System.out.println("Dime el mes:");
 		mes = entrada.nextInt();
-		System.out.println("Dime el año:");
+		System.out.println("Dime el aÃ±o:");
 		agno = entrada.nextInt();
 
 		DiaClase diaClase = new DiaClase(new Fecha(dia, mes, agno));
@@ -513,7 +516,7 @@ public class ProgramaMain {
 			dni = listaAlumnos.get(i).getDni();
 			System.out.println(apellidos + ", " + nombre + ", " + dni);
 
-			System.out.println("¿Ha faltado? Y para si N para no.");
+			System.out.println("Â¿Ha faltado? Y para si N para no.");
 			respuesta = entrada.nextLine().charAt(0);
 
 			if (respuesta == 'Y') {
@@ -527,10 +530,10 @@ public class ProgramaMain {
 
 					posicion = listaAlumnos.get(i).getFaltas().indexOf(diaClase);
 
-					// Si existe la fecha, ponemos faltas en el día directamente.
+					// Si existe la fecha, ponemos faltas en el dÃ­a directamente.
 					if (posicion != -1) {
 						listaAlumnos.get(i).getFaltas().get(posicion).getSesion().faltaDiaEntero();
-					} else {// Si no, ponemos las faltas y lo añadimos al ArrayList.
+					} else {// Si no, ponemos las faltas y lo aÃ±adimos al ArrayList.
 						diaClase.getSesion().faltaDiaEntero();
 						listaAlumnos.get(i).getFaltas().add(diaClase);
 					}
@@ -540,7 +543,7 @@ public class ProgramaMain {
 					break;
 				case 2:
 					int sesion;
-					System.out.println("Dime la sesión:");
+					System.out.println("Dime la sesiÃ³n:");
 					sesion = entrada.nextInt();
 
 					posicion = listaAlumnos.get(i).getFaltas().indexOf(diaClase);
@@ -548,11 +551,11 @@ public class ProgramaMain {
 					// Si existe la fecha, ponemos falta en la sesion directamente.
 					if (posicion != -1) {
 						listaAlumnos.get(i).getFaltas().get(posicion).getSesion().faltaHora(sesion);
-					} else {// Si no, ponemos la falta y lo añadimos al ArrayList.
+					} else {// Si no, ponemos la falta y lo aÃ±adimos al ArrayList.
 						diaClase.getSesion().faltaHora(sesion);
 						listaAlumnos.get(i).getFaltas().add(diaClase);
 					}
-					System.out.println("Se le ha puesto falta en la sesión nº" + sesion + " y esta fecha: ");
+					System.out.println("Se le ha puesto falta en la sesiÃ³n nÂº" + sesion + " y esta fecha: ");
 					diaClase.getFechaDia().imprimeFecha();
 					break;
 				default:
@@ -566,7 +569,7 @@ public class ProgramaMain {
 	}
 
 
-	// Autor Juanma. Método 12 listar faltas//
+	// Autor Juanma. MÃ©todo 12 listar faltas//
 	public static void listarFaltas(ArrayList<Alumno> listaAlumnos) throws Exception{
 		Scanner entrada = new Scanner(System.in);
 		int alumno, i;
@@ -576,10 +579,10 @@ public class ProgramaMain {
 		listarAlumnos(listaAlumnos);
 
 		
-			System.out.println("Introduzca el número de lista del alumno que desea listar sus calificaciones");
+			System.out.println("Introduzca el nÃºmero de lista del alumno que desea listar sus calificaciones");
 			alumno = entrada.nextInt();
 			if (alumno < 1 || alumno > listaAlumnos.size()) {
-				throw new Exception ("Debe seleccionar el número de lista de un Alumno válido.");
+				throw new Exception ("Debe seleccionar el nÃºmero de lista de un Alumno vÃ¡lido.");
 			}
 
 		
@@ -600,8 +603,8 @@ public class ProgramaMain {
 
 	}
 
-	// Método Main que llama a los demás métodos. 
-	// Autor: Luján
+	// MÃ©todo Main que llama a los demÃ¡s mÃ©todos. 
+	// Autor: LujÃ¡n
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -665,12 +668,16 @@ public class ProgramaMain {
 				break;
 			case 7:
 				do {
-
+					try{
+						introducirCalificacion(listaAlumnos);
+					}catch(Exception ex){
+						System.out.println(ex.getMessage())
+					}
 				} while (repetir() == true);
 				break;
 			case 8:
 				do {
-
+					listarCalificaciones(listaAlumnos);
 				} while (repetir() == true);
 				break;
 			case 9:
@@ -692,6 +699,11 @@ public class ProgramaMain {
 				} while (repetir() == true);
 				break;
 			case 11:
+				try{
+					pasarLista(listaAlumnos);
+				}catch(Exception ex){
+					System.out.println(ex.getMessage());
+				}
 				break;
 			case 12:
 				do {
