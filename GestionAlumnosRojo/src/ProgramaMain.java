@@ -671,7 +671,7 @@ public class ProgramaMain {
 					try{
 						introducirCalificacion(listaAlumnos);
 					}catch(Exception ex){
-						System.out.println(ex.getMessage())
+						System.out.println(ex.getMessage());
 					}
 				} while (repetir() == true);
 				break;
