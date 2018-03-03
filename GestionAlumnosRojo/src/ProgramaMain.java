@@ -168,16 +168,16 @@ public class ProgramaMain {
 		}
 	
 	// Autor: Jose Alberto. MÃƒÂ©todo estÃƒÂ¡tico 3
-	public static void listarAlumnos(ArrayList<Alumno> alumno) {
+	public static void listarAlumnos(ArrayList<Alumno> listaAlumnos) {
 		//Obtenemos el tamaÃ±o del ArrayList de alumno y lo guardamos en una variable
-		int num = alumno.size();
+		int num = listaAlumnos.size();
 		int cont = 0;
 		//Comprobamos si existen alumnos dentro del ArrayList. En caso de no haberlos, saltarÃ¡ el mensaje
 		if (num == 0) {
 			System.out.println("No hay alumnos");
 		}
 		//Creamos un iterador para poder mostrar los valores dentro del ArrayList de alumno
-		Iterator<Alumno> iterador = alumno.iterator();
+		Iterator<Alumno> iterador = listaAlumnos.iterator();
 		while (iterador.hasNext()) {
 			Alumno lista = iterador.next();
 			//Creamos distintas variables para cada dato del alumno y hacemos uso de los mÃ©todos 
@@ -335,48 +335,53 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Jose Alberto. MÃƒÂ©todo 7: Introducir calificaciones.
-		public static void introducirCalificacion(ArrayList<Alumno> alumno)
-				throws Exception {
-			Scanner entrada = new Scanner(System.in);
-			//Creamos las variables
-			String nota, asignatura,dni;
-			int existe, pos = -1;
-			//Pedimos DNI
-			System.out.println("Dime el D.N.I del alumno:");
-			dni=entrada.nextLine();
-			//Llamamos al mÃ©todo 'existe' para comprobar si existe el alumno
-			existe = existe(alumno, dni);
-			//En caso de no existir, saltarÃ¡ una excepciÃ³n
-			if (existe == -1) {
-				throw new Exception("No existe el alumno");
-			}
-			//En caso de que el alumno exista, continuarÃ¡ el mÃ©todo
-			if (existe > 0) {
-				try {
-					//Introducimos la posiciÃ³n del alumno
-					System.out.println("Introduzca la posiciÃ³n del alumno del cual desea introducir las calificaciones");
-					pos = entrada.nextInt();
-					//Limpiamos el buffer
-					entrada.next();
-					//Introducimos la asignatura a la cual vamos a asignarle una calificaciÃ³n
-					System.out.println("Introduzca la asignatura que va a calificar");
-					asignatura = entrada.nextLine();
-					//Creamos un nuevo objeto calificaciÃ³n para guardar la nota de la asignatura
-					Calificacion calificacion = new Calificacion(asignatura);
-					//Introducimos la nota y la asignamos en el objeto 'calificaciÃ³n'
-					System.out.println("Introduzca la nota obtenida");
-					nota = entrada.nextLine();
+	// Autor: Jose Alberto. MÃ©todo 7: Introducir calificaciones.
+			public static void introducirCalificacion(ArrayList<Alumno> listaAlumnos)
+					throws Exception {
+				Scanner entrada = new Scanner(System.in);
+				//Creamos las variables
+				String nota, asignatura;
+				int pos,u;
+				int existe;
+				String dni;
+				
+				System.out.println("Introduzca el dni del alumno");
+				dni=entrada.nextLine();
+				
+				//Llamamos al método 'existe' para comprobar si existe el alumno
+				existe = existe(listaAlumnos, dni);
 
-					calificacion.setNota(nota);
-					//Exploramos el ArrayList de alumno y obtenemos la posiciÃ³n y las notas para aÃ±adirle la calificaciÃ³n
-					alumno.get(pos).getNotas().add(calificacion);
-					
-				} catch (Exception except) {//En caso de que se introduzca algÃºn dato de manera incorrecta, saltarÃ¡ la excepciÃ³n
-					System.out.println(except.getMessage());
+				
+				//En caso de que el alumno exista, continuará el método
+				if (existe != -1) {
+					try {
+						
+						listarAlumnos(listaAlumnos);
+						//Introducimos la posición del alumno
+						System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
+						pos = entrada.nextInt();
+						pos-=1;
+						//Introducimos la asignatura a la cual vamos a asignarle una calificación
+						System.out.println("Introduzca la asignatura que va a calificar");
+						asignatura = entrada.next();
+						//Creamos un nuevo objeto calificación para guardar la nota de la asignatura
+						Calificacion calificacion = new Calificacion(asignatura);
+						//Introducimos la nota y la asignamos en el objeto 'calificación'
+						System.out.println("Introduzca la nota obtenida");
+						nota = entrada.next();
+
+						calificacion.setAsignatura(asignatura);
+						calificacion.setNota(nota);
+						//Exploramos el ArrayList de alumno y obtenemos la posición y las notas para añadirle la calificación
+						listaAlumnos.get(pos).getNotas().add(calificacion);
+						
+					} catch (Exception except) {//En caso de que se introduzca algún dato de manera incorrecta, saltará la excepción
+						System.out.println(except.getMessage());
+					}
+				}else {			//En caso de no existir, saltará una excepción
+					throw new Exception("No existe el alumno");
 				}
 			}
-		}
 
 	// Autor: Juan MartÃƒÂ­n, MÃƒÂ©todo 8 Listar calificaciones del alumno.
 
