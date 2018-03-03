@@ -198,17 +198,17 @@ public class ProgramaMain {
 	// Autor: Jonathan Morcillo ; MÃ©todo 4
 	public static void modificarAlumnos(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
-		int opcion=0;
+		int opcion;
 
 		do {
 
 			// Creamos las variables necesarias
+			Alumno al;
 			int i;
 			String modify;
 			boolean mod = false;
 
 			// Llamamos al metodo para mostrar la lista de alumnos
-			if(opcion!=6){
 			listarAlumnos(listaAlumnos);
 
 			System.out.println("Introduzca la posicion del alumno a modificar");
@@ -217,8 +217,8 @@ public class ProgramaMain {
 			i = entrada.nextInt() - 1;
 			entrada.nextLine(); // limpiamos buffer
 
-			Alumno al = listaAlumnos.get(i);
-			}
+			al = listaAlumnos.get(i);
+			
 				
 			System.out.println(
 					"Introduzca la opcion a realizar:\n1.- Modificar dni\n2.- Modificar nombre\n3.- Modificar apellidos\n4.- Modificar telefono\n5.- Modificar email\n6.- Salir");
