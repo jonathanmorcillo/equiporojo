@@ -195,96 +195,91 @@ public class ProgramaMain {
 		}
 	}
 
-	// Autor: Jonathan Morcillo ; MÃ©todo 4
+	// Autor: Jonathan Morcillo ; Método 4
 	public static void modificarAlumnos(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
-		int opcion;
+		int opcion=0;
 
-		do {
 
-			// Creamos las variables necesarias
-			Alumno al;
-			int i;
-			String modify;
-			boolean mod = false;
 
-			// Llamamos al metodo para mostrar la lista de alumnos
-			listarAlumnos(listaAlumnos);
+		// Creamos las variables necesarias
+		int i;
+		String modify;
+		boolean mod = false;
 
-			System.out.println("Introduzca la posicion del alumno a modificar");
+		// Llamamos al metodo para mostrar la lista de alumnos
+		
+		listarAlumnos(listaAlumnos);
 
-			// Restamos 1 puesto que las posiciones empiezan en 1 y las celdas en 0
-			i = entrada.nextInt() - 1;
-			entrada.nextLine(); // limpiamos buffer
+		System.out.println("Introduzca la posicion del alumno a modificar");
 
-			al = listaAlumnos.get(i);
+		// Restamos 1 puesto que las posiciones empiezan en 1 y las celdas en 0
+		i = entrada.nextInt() - 1;
+		entrada.nextLine(); // limpiamos buffer
+
+		Alumno al = listaAlumnos.get(i);
+
 			
-				
+		System.out.println(
+				"Introduzca la opcion a realizar:\n1.- Modificar dni\n2.- Modificar nombre\n3.- Modificar apellidos\n4.- Modificar telefono\n5.- Modificar email");
+		opcion = entrada.nextInt();
+		entrada.nextLine();
+
+		// Creamos un menu con los distintos datos que se pueden modificar y en el que
+		// los pasos son:
+		// 1.- Mostrar dato actual
+		// 2.- Pedir nuevo dato
+		// 3.- Modificar los datos
+		// 4.- Mostrar datos tras modificar
+		switch (opcion) {
+
+		case 1:
+			do {
+				System.out.println("Introduzca el nuevo dni para el alumno " + al.getNombre() + " "
+						+ al.getApellidos() + " con dni actual : " + al.getDni());
+				modify = entrada.nextLine();
+				// Comprobamos que el nuevo dni no existe, si no existe se modifica y si existe
+				// se lanza una excepcion para pedir uno diferente
+				if (existe(listaAlumnos, modify) == -1) {
+					al.setDni(modify);
+					mod = true;
+				} else {
+					throw new Exception("El dni introducido ya existe, introduzca uno diferente");
+				}
+			} while (mod == false);
+			System.out.println("El dni ha sido modificado ahora es: " + al.getDni());
+			break;
+		case 2:
+			System.out.println("Introduzca el nuevo nombre para el alumno " + al.getNombre());
+			modify = entrada.nextLine();
+			al.setNombre(modify);
+			System.out.println("El nuevo nombre del alumno es  " + al.getNombre());
+			break;
+		case 3:
 			System.out.println(
-					"Introduzca la opcion a realizar:\n1.- Modificar dni\n2.- Modificar nombre\n3.- Modificar apellidos\n4.- Modificar telefono\n5.- Modificar email\n6.- Salir");
-			opcion = entrada.nextInt();
-			entrada.nextLine();
-
-			// Creamos un menu con los distintos datos que se pueden modificar y en el que
-			// los pasos son:
-			// 1.- Mostrar dato actual
-			// 2.- Pedir nuevo dato
-			// 3.- Modificar los datos
-			// 4.- Mostrar datos tras modificar
-			switch (opcion) {
-
-			case 1:
-				do {
-					System.out.println("Introduzca el nuevo dni para el alumno " + al.getNombre() + " "
-							+ al.getApellidos() + " con dni actual : " + al.getDni());
-					modify = entrada.nextLine();
-					// Comprobamos que el nuevo dni no existe, si no existe se modifica y si existe
-					// se lanza una excepcion para pedir uno diferente
-					if (existe(listaAlumnos, modify) == -1) {
-						al.setDni(modify);
-						mod = true;
-					} else {
-						throw new Exception("El dni introducido ya existe, introduzca uno diferente");
-					}
-				} while (mod == false);
-				System.out.println("El dni ha sido modificado ahora es: " + al.getDni());
-				break;
-			case 2:
-				System.out.println("Introduzca el nuevo nombre para el alumno " + al.getNombre());
-				modify = entrada.nextLine();
-				al.setNombre(modify);
-				System.out.println("El nuevo nombre del alumno es  " + al.getNombre());
-				break;
-			case 3:
-				System.out.println(
-						"Introduzca los nuevos apellidos para el alumno " + al.getNombre() + " " + al.getApellidos());
-				modify = entrada.nextLine();
-				al.setApellidos(modify);
-				System.out.println("Los nuevos apellidos del alumno son  " + al.getApellidos());
-				break;
-			case 4:
-				System.out.println("Introduzca el nuevo telefono para el alumno " + al.getNombre() + " "
-						+ al.getApellidos() + " con numero actual " + al.getTelefeno());
-				modify = entrada.nextLine();
-				al.setTelefono(modify);
-				System.out.println("El nuevo telefono del alumno es  " + al.getTelefeno());
-				break;
-			case 5:
-				System.out.println("Introduzca el nuevo email para el alumno " + al.getNombre() + " "
-						+ al.getApellidos() + " con email actual " + al.getEmail());
-				modify = entrada.nextLine();
-				al.setEmail(modify);
-				System.out.println("El nuevo email del alumno es  " + al.getEmail());
-				break;
-			case 6:
-				System.out.println("Has salido");
-				break;
-			default:
-				System.out.println("Opcion no valida");
-				break;
-			}
-		} while (opcion != 6);
-
+					"Introduzca los nuevos apellidos para el alumno " + al.getNombre() + " " + al.getApellidos());
+			modify = entrada.nextLine();
+			al.setApellidos(modify);
+			System.out.println("Los nuevos apellidos del alumno son  " + al.getApellidos());
+			break;
+		case 4:
+			System.out.println("Introduzca el nuevo teléfono para el alumno " + al.getNombre() + " "
+					+ al.getApellidos() + " con numero actual " + al.getTelefeno());
+			modify = entrada.nextLine();
+			al.setTelefono(modify);
+			System.out.println("El nuevo teléfono del alumno es  " + al.getTelefeno());
+			break;
+		case 5:
+			System.out.println("Introduzca el nuevo email para el alumno " + al.getNombre() + " "
+					+ al.getApellidos() + " con email actual " + al.getEmail());
+			modify = entrada.nextLine();
+			al.setEmail(modify);
+			System.out.println("El nuevo email del alumno es  " + al.getEmail());
+			break;
+		default:
+			System.out.println("Opcion no válida");
+			break;
+		}
 	}
 
 	// Autor: Juan MartÃ­n, Metodo 5 Matricular alumnos.
