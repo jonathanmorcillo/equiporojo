@@ -198,12 +198,11 @@ public class ProgramaMain {
 	// Autor: Jonathan Morcillo ; MÃ©todo 4
 	public static void modificarAlumnos(ArrayList<Alumno> listaAlumnos) throws Exception {
 		Scanner entrada = new Scanner(System.in);
-		int opcion;
+		int opcion=0;
 
 		do {
 
 			// Creamos las variables necesarias
-			Alumno al;
 			int i;
 			String modify;
 			boolean mod = false;
@@ -218,7 +217,7 @@ public class ProgramaMain {
 			i = entrada.nextInt() - 1;
 			entrada.nextLine(); // limpiamos buffer
 
-			al = listaAlumnos.get(i);
+			Alumno al = listaAlumnos.get(i);
 			}
 				
 			System.out.println(
