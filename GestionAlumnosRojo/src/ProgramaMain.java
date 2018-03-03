@@ -20,7 +20,7 @@ public class ProgramaMain {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
 
-		System.out.println("Ã‚Â¿Quieres repetir esta opciÃƒÂ³n?" + "\nEscribe Y si es sÃƒÂ­ y N si es no.");
+		System.out.println("¿Quieres repetir esta opción?" + "\nEscribe Y si es sí y N si es no.");
 		repetir = entrada.next().charAt(0);
 		
 		if(repetir=='Y'||repetir=='y') {
@@ -108,7 +108,7 @@ public class ProgramaMain {
 			System.out.println("Introduzca el nombre de alumno a matricular:");
 			nombre = entrada.nextLine();
 
-			System.out.println("Introduzca el telÃƒÂ©fono de alumno a matricular:");
+			System.out.println("Introduzca el teléfono de alumno a matricular:");
 			telefono = entrada.nextLine();
 
 			System.out.println("Introduzca el email de alumno a matricular:");
@@ -146,7 +146,7 @@ public class ProgramaMain {
 			String dni;
 
 			// Se recoge el número del alumno a eliminar
-			System.out.println("Introduzca el nÃƒÂºmero del alumno a eliminar:");
+			System.out.println("Introduzca el número del alumno a eliminar:");
 			listarAlumnos(matriculados);
 			borrar = entrada.nextInt();
 			borrar = borrar - 1;
@@ -263,11 +263,11 @@ public class ProgramaMain {
 			System.out.println("Los nuevos apellidos del alumno son  " + al.getApellidos());
 			break;
 		case 4:
-			System.out.println("Introduzca el nuevo telÃ©fono para el alumno " + al.getNombre() + " "
+			System.out.println("Introduzca el nuevo teléfono para el alumno " + al.getNombre() + " "
 					+ al.getApellidos() + " con numero actual " + al.getTelefeno());
 			modify = entrada.nextLine();
 			al.setTelefono(modify);
-			System.out.println("El nuevo telÃ©fono del alumno es  " + al.getTelefeno());
+			System.out.println("El nuevo teléfono del alumno es  " + al.getTelefeno());
 			break;
 		case 5:
 			System.out.println("Introduzca el nuevo email para el alumno " + al.getNombre() + " "
@@ -277,7 +277,7 @@ public class ProgramaMain {
 			System.out.println("El nuevo email del alumno es  " + al.getEmail());
 			break;
 		default:
-			System.out.println("Opcion no vÃ¡lida");
+			System.out.println("Opcion no válida");
 			break;
 		}
 	}
@@ -328,7 +328,7 @@ public class ProgramaMain {
 
 			} else {
 				System.out.println("El alumno " + listaAlumnos.get(j).getNombre() + " "
-						+ listaAlumnos.get(j).getApellidos() + " no estÃƒÂ¡ registrado en dicha asignatura");
+						+ listaAlumnos.get(j).getApellidos() + " no está registrado en dicha asignatura");
 			}
 		} else {
 			throw new Exception("El alumno no existe");
@@ -431,11 +431,11 @@ public class ProgramaMain {
 		}
 		//Si existe el alumno pedimos la fecha para poner la falta	
 		int dia, mes, agno;
-		System.out.println("Dime el dÃƒÂ­a:");
+		System.out.println("Dime el día:");
 		dia=entrada.nextInt();
 		System.out.println("Dime el mes:");
 		mes=entrada.nextInt();
-		System.out.println("Dime el aÃƒÂ±o:");
+		System.out.println("Dime el año:");
 		agno=entrada.nextInt();
 	
 		DiaClase diaClase = new DiaClase(new Fecha(dia,mes,agno));
@@ -491,8 +491,7 @@ public class ProgramaMain {
 		System.out.println("Se le ha puesto falta en la sesiÃƒÂ³n nÃ‚Âº" + sesion + " y esta fecha: ");
 		diaClase.getFechaDia().imprimeFecha();
 	}
-	
-	// Autor Juanma. Método 11 pasar lista//
+		// Autor Juanma. Método 11 pasar lista//
 	public static void pasarLista(ArrayList<Alumno> listaAlumnos) throws Exception {
 
 		Scanner entrada = new Scanner(System.in);
@@ -519,12 +518,14 @@ public class ProgramaMain {
 
 			System.out.println("¿Ha faltado? Y para si N para no.");
 			respuesta = entrada.nextLine().charAt(0);
-
+			
+			
 			if (respuesta == ('Y') || respuesta == ('y')) {
 				System.out.println("1. \t Poner falta dia completo.");
 				System.out.println("2. \t Poner falta sesion");
 				opcion = entrada.nextInt();
-
+				entrada.nextLine();
+				
 				switch (opcion) {
 				case 1:
 
@@ -545,6 +546,7 @@ public class ProgramaMain {
 					int sesion;
 					System.out.println("Dime la sesión:");
 					sesion = entrada.nextInt();
+					entrada.nextLine();
 
 					posicion = listaAlumnos.get(i).getFaltas().indexOf(diaClase);
 
