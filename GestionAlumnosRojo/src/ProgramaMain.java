@@ -209,6 +209,7 @@ public class ProgramaMain {
 			boolean mod = false;
 
 			// Llamamos al metodo para mostrar la lista de alumnos
+			if(opcion!=6){
 			listarAlumnos(listaAlumnos);
 
 			System.out.println("Introduzca la posicion del alumno a modificar");
@@ -218,7 +219,8 @@ public class ProgramaMain {
 			entrada.nextLine(); // limpiamos buffer
 
 			al = listaAlumnos.get(i);
-
+			}
+				
 			System.out.println(
 					"Introduzca la opcion a realizar:\n1.- Modificar dni\n2.- Modificar nombre\n3.- Modificar apellidos\n4.- Modificar telefono\n5.- Modificar email\n6.- Salir");
 			opcion = entrada.nextInt();
