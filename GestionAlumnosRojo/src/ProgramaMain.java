@@ -478,56 +478,83 @@ public class ProgramaMain {
 		diaClase.getFechaDia().imprimeFecha();
 	}
 	
-	// Autor Juanma. Método 11 pasar lista//
-	public static void pasarLista (ArrayList<Alumno> listaAlumnos, Fecha fechaDia) throws Exception {
-		
+// Autor Juanma. Método 11 pasar lista//
+	public static void pasarLista(ArrayList<Alumno> listaAlumnos) throws Exception {
+
 		Scanner entrada = new Scanner(System.in);
-		
+
 		String apellidos, nombre, dni;
 		char respuesta;
-		int opcion;
-		
+		int opcion, dia, mes, agno, posicion;
+
+		System.out.println("Dime el día:");
+		dia = entrada.nextInt();
+		System.out.println("Dime el mes:");
+		mes = entrada.nextInt();
+		System.out.println("Dime el año:");
+		agno = entrada.nextInt();
+
+		DiaClase diaClase = new DiaClase(new Fecha(dia, mes, agno));
+
 		for (int i = 0; i < listaAlumnos.size(); i++) {
-				System.out.println("Has selecionado a :");
-				apellidos = listaAlumnos.get(i).getApellidos();
-				nombre = listaAlumnos.get(i).getNombre();
-				dni = listaAlumnos.get(i).getDni();
-				System.out.println(apellidos + ", " + nombre + ", " + dni);
-				
-				System.out.println("¿Ha faltado? Y para si N para no.");
-				respuesta = entrada.nextLine().charAt(0);
-				
-				if (respuesta == 'Y') {
-					System.out.println("1. \t Poner falta dia completo.");
-					System.out.println("2. \t Poner falta sesion");
-					opcion = entrada.nextInt();
-					entrada.nextLine();
-							
-					switch (opcion) {
-					case 1:
-						try {
-							ponerFaltaDia(listaAlumnos);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
-						break;
-					case 2:
-						try {
-							ponerFaltaSesion(listaAlumnos);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
-						break;
-					default:
-						throw new Exception ("Solo puede elegir una opcion valida.");
+			System.out.println("Has selecionado a :");
+			apellidos = listaAlumnos.get(i).getApellidos();
+			nombre = listaAlumnos.get(i).getNombre();
+			dni = listaAlumnos.get(i).getDni();
+			System.out.println(apellidos + ", " + nombre + ", " + dni);
+
+			System.out.println("¿Ha faltado? Y para si N para no.");
+			respuesta = entrada.nextLine().charAt(0);
+
+			if (respuesta == 'Y') {
+				System.out.println("1. \t Poner falta dia completo.");
+				System.out.println("2. \t Poner falta sesion");
+				opcion = entrada.nextInt();
+				entrada.nextLine();
+
+				switch (opcion) {
+				case 1:
+
+					posicion = listaAlumnos.get(i).getFaltas().indexOf(diaClase);
+
+					// Si existe la fecha, ponemos faltas en el día directamente.
+					if (posicion != -1) {
+						listaAlumnos.get(i).getFaltas().get(posicion).getSesion().faltaDiaEntero();
+					} else {// Si no, ponemos las faltas y lo añadimos al ArrayList.
+						diaClase.getSesion().faltaDiaEntero();
+						listaAlumnos.get(i).getFaltas().add(diaClase);
 					}
+					System.out.println("Se le ha puesto faltas en esta fecha: ");
+					diaClase.getFechaDia().imprimeFecha();
+
+					break;
+				case 2:
+					int sesion;
+					System.out.println("Dime la sesión:");
+					sesion = entrada.nextInt();
+
+					posicion = listaAlumnos.get(i).getFaltas().indexOf(diaClase);
+
+					// Si existe la fecha, ponemos falta en la sesion directamente.
+					if (posicion != -1) {
+						listaAlumnos.get(i).getFaltas().get(posicion).getSesion().faltaHora(sesion);
+					} else {// Si no, ponemos la falta y lo añadimos al ArrayList.
+						diaClase.getSesion().faltaHora(sesion);
+						listaAlumnos.get(i).getFaltas().add(diaClase);
+					}
+					System.out.println("Se le ha puesto falta en la sesión nº" + sesion + " y esta fecha: ");
+					diaClase.getFechaDia().imprimeFecha();
+					break;
+				default:
+					throw new Exception("Solo puede elegir una opcion valida.");
+
 				}
-				
-				
-			
 			}
-				
+
+		}
+
 	}
+
 
 	// Autor Juanma. Método 12 listar faltas//
 	public static void listarFaltas(ArrayList<Alumno> listaAlumnos) throws Exception{
