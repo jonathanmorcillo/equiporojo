@@ -745,7 +745,11 @@ public class ProgramaMain {
 				break;
 			case 8:// Ver todas las calificaciones de asignaturas que tiene un objeto Alumno.
 				do {
-					listarCalificaciones(listaAlumnos);
+					try{
+						listarCalificaciones(listaAlumnos);
+					}catch(Exception ex){
+						System.out.println(ex.getMessage());
+					}
 				} while (repetir() == true);
 				break;
 			case 9:// Pone una falta en todas las sesiones de un día a un objeto Alumno.
