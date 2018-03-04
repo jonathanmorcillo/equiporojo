@@ -3,6 +3,7 @@ import java.util.*;
 public class ProgramaMain {
 
 	// Autor: Luján
+	// Método para mostrar el menú principal.
 	public static void mostrarMenu() {
 		System.out.println("********************************");
 		System.out.println("***********   Menú   ***********");
@@ -16,6 +17,7 @@ public class ProgramaMain {
 	}
 
 	// Autor: Luján
+	// Método para repetir las opciones, devuelve un boolean.
 	public static boolean repetir() {
 		Scanner entrada = new Scanner(System.in);
 		char repetir = ' ';
@@ -418,6 +420,7 @@ public class ProgramaMain {
 	}
 
 	// Autor: Luján. Método 9 Poner una falta (Día completo).
+	// Método para poner faltas en un dia completo.
 	public static void ponerFaltaDia(ArrayList<Alumno> listaAlumnos) throws Exception{
 		Scanner entrada = new Scanner(System.in);
 
@@ -429,7 +432,7 @@ public class ProgramaMain {
 		if(exist == -1){
 			throw new Exception("Error: El alumno no existe.");
 		}
-		//Si existe el alumno pedimos la fecha para poner la falta	
+		// Si existe el alumno pedimos la fecha para poner la falta	
 		int dia, mes, agno;
 		System.out.println("Dime el día:");
 		dia=entrada.nextInt();
@@ -439,16 +442,17 @@ public class ProgramaMain {
 		agno=entrada.nextInt();
 	
 		DiaClase diaClase = new DiaClase(new Fecha(dia,mes,agno));
-		
+		// Creamos y conseguimos posición
 		int posicion = listaAlumnos.get(exist).getFaltas().indexOf(diaClase);
 		
-		//Si existe la fecha, ponemos faltas en el día directamente.
+		// Si existe la fecha, ponemos faltas en el día directamente.
 		if(posicion != -1){
 			listaAlumnos.get(exist).getFaltas().get(posicion).getSesion().faltaDiaEntero();
-		}else{//Si no, ponemos las faltas y lo añadimos al ArrayList.
+		}else{// Si no, ponemos las faltas y lo añadimos al ArrayList.
 			diaClase.getSesion().faltaDiaEntero();
 			listaAlumnos.get(exist).getFaltas().add(diaClase);
 		}
+		// Sacamos la fecha
 		System.out.println("Se le ha puesto faltas en esta fecha: ");
 		diaClase.getFechaDia().imprimeFecha();
 								 
@@ -466,7 +470,7 @@ public class ProgramaMain {
 		if(exist == -1){
 			throw new Exception("Error: El alumno no existe.");
 		}
-		//Si existe el alumno pedimos la fecha para poner la falta	
+		// Si existe el alumno pedimos la fecha para poner la falta	
 		int dia, mes, agno;
 		System.out.println("Dime el día:");
 		dia=entrada.nextInt();
@@ -479,16 +483,18 @@ public class ProgramaMain {
 	
 		DiaClase diaClase = new DiaClase(new Fecha(dia,mes,agno));
 		
+		// Creamos y conseguimos posición
 		int posicion = listaAlumnos.get(exist).getFaltas().indexOf(diaClase);
 		
-		//Si existe la fecha, ponemos falta en la sesion directamente.
+		// Si existe la fecha, ponemos falta en la sesion directamente.
 		if(posicion != -1){
 			listaAlumnos.get(exist).getFaltas().get(posicion).getSesion().faltaHora(sesion);
-		}else{//Si no, ponemos la falta y lo añadimos al ArrayList.
+		}else{// Si no, ponemos la falta y lo añadimos al ArrayList.
 			diaClase.getSesion().faltaHora(sesion);
 			listaAlumnos.get(exist).getFaltas().add(diaClase);
 		}
-		System.out.println("Se le ha puesto falta en la sesiÃƒÂ³n nÃ‚Âº" + sesion + " y esta fecha: ");
+		// Sacamos la fecha
+		System.out.println("Se le ha puesto falta en la sesión nº" + sesion + " y esta fecha: ");
 		diaClase.getFechaDia().imprimeFecha();
 	}
 		// Autor Juanma. Método 11 pasar lista//
@@ -611,7 +617,7 @@ public class ProgramaMain {
 		// TODO Auto-generated method stub
 
 		Scanner entrada = new Scanner(System.in);
-
+		// Declaramos el ArrayList que será utilizado en todo el programa.
 		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 
 		int menu = 0;
@@ -620,7 +626,7 @@ public class ProgramaMain {
 			menu = entrada.nextInt();
 
 			switch (menu) {
-			case 1:
+			case 1:// Añadir un objeto Alumno al ArrayList
 				do {
 					try {
 						darDeAlta(listaAlumnos);
@@ -629,7 +635,7 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 2:
+			case 2:// Quitar un objeto Alumno del ArrayList
 				do {
 					try {
 						darDeBaja(listaAlumnos);
@@ -638,19 +644,19 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 3:
+			case 3:// Imprime los objetos del ArrayList.
 
 				listarAlumnos(listaAlumnos);
 
 				break;
-			case 4:
+			case 4:// Editar los datos de un objeto Alumno del ArrayList.
 				try {
 					modificarAlumnos(listaAlumnos);
 				}catch(Exception ex) {
 					System.out.println(ex.getMessage());
 				}
 				break;
-			case 5:
+			case 5:// Se asocia una asignatura a un objeto Alumno.
 				do {
 					try{
 						matricular(listaAlumnos);
@@ -659,7 +665,7 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 6:
+			case 6:// Quitar una asignatura de un objeto Alumno.
 				do {
 					try{
 						darBajaAsignatura(listaAlumnos);
@@ -668,7 +674,7 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 7:
+			case 7:// Introducir una calificación asociada a una asignatura y Alumno.
 				do {
 					try{
 						introducirCalificacion(listaAlumnos);
@@ -677,12 +683,12 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 8:
+			case 8:// Ver todas las calificaciones de asignaturas que tiene un objeto Alumno.
 				do {
 					listarCalificaciones(listaAlumnos);
 				} while (repetir() == true);
 				break;
-			case 9:
+			case 9:// Pone una falta en todas las sesiones de un día a un objeto Alumno.
 				do {
 					try{
 						ponerFaltaDia(listaAlumnos);
@@ -691,7 +697,7 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 10:
+			case 10:// Pone una falta en una sesión de un día a un objeto Alumno.
 				do {
 					try{
 						ponerFaltaSesion(listaAlumnos);
@@ -700,14 +706,14 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 11:
+			case 11:// Uno por uno, pasarán todos los objetos alumnos y se les pondrá o no falta.
 				try{
 					pasarLista(listaAlumnos);
 				}catch(Exception ex){
 					System.out.println(ex.getMessage());
 				}
 				break;
-			case 12:
+			case 12:// Ver las faltas que tiene asociado un objeto ALumno
 				do {
 					try{
 						listarFaltas(listaAlumnos);
@@ -716,7 +722,7 @@ public class ProgramaMain {
 					}
 				} while (repetir() == true);
 				break;
-			case 13:
+			case 13:// Salir
 				System.out.println("Saliendo del programa...");
 				break;
 			default:
