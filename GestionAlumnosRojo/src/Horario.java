@@ -1,5 +1,5 @@
 
-// Autor: Luj·n
+// Autor: Luj√°n
 public class Horario {
 
 	// Variables
@@ -17,14 +17,14 @@ public class Horario {
 		return this.sesiones;
 	}
 
-	// MÈtodo faltaDiaEntero que pone todas las horas a F.
+	// M√©todo faltaDiaEntero que pone todas las horas a F.
 	public void faltaDiaEntero() {
 		for (int i = 0; i < sesiones.length; i++) {
 			this.sesiones[i] = 'F';
 		}
 	}
 
-	// MÈtodo faltaHora que pone falta en una sesion especÌfica.
+	// M√©todo faltaHora que pone falta en una sesion espec√≠fica.
 	public void faltaHora(int sesion) throws Exception {
 		if ((sesion > 6) || (sesion < 1)) {
 			throw new Exception("Error: La sesion tiene que ser entre 1 y 6.");
@@ -36,12 +36,14 @@ public class Horario {
 		}
 	}
 
-	// MÈtodo imprimeHorario para mostrar el array completo.
+	// M√©todo imprimeHorario para mostrar el array completo.
 	public void imprimeHorario() {
 		for (int i = 0; i < sesiones.length; i++) {
-			System.out.println(sesiones[i]);
+			System.out.print(sesiones[i]);
 			if (sesiones.length - 1 != i) {
-				System.out.println("/");
+				System.out.print("/");
+			}else{
+				System.out.println("\n");
 			}
 		}
 	}
