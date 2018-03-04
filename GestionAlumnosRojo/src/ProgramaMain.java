@@ -363,19 +363,40 @@ public class ProgramaMain {
 						System.out.println("Introduzca la posición del alumno del cual desea introducir las calificaciones");
 						pos = entrada.nextInt();
 						pos-=1;
+						
+						
 						//Introducimos la asignatura a la cual vamos a asignarle una calificación
 						System.out.println("Introduzca la asignatura que va a calificar");
 						asignatura = entrada.next();
-						//Creamos un nuevo objeto calificación para guardar la nota de la asignatura
-						Calificacion calificacion = new Calificacion(asignatura);
-						//Introducimos la nota y la asignamos en el objeto 'calificación'
-						System.out.println("Introduzca la nota obtenida");
-						nota = entrada.next();
-
-						calificacion.setAsignatura(asignatura);
-						calificacion.setNota(nota);
-						//Exploramos el ArrayList de alumno y obtenemos la posición y las notas para añadirle la calificación
-						listaAlumnos.get(pos).getNotas().add(calificacion);
+						//Creamos una variable matriculado para comprobar si el alumno escogido ha sido matriculado en la asignatura.
+						int matriculado=matriculado(listaAlumnos, dni, asignatura);
+						
+						if(matriculado == -1) {
+							//Si el alumno no esta matriculado en esta asignatura salta el mensaje y 
+							//llamo al metodo 'matricular' para matricularlo y añadirle la nota.
+							System.out.println("El alumno no esta matriculado en la asignatura, proceda a matricularlo:"+"\n");
+							matricular(listaAlumnos);
+							
+							//Obtenemos la posición de la asignatura a la cual vamos a añadirle la nota
+							
+							int posicion = matriculado(listaAlumnos, dni, asignatura);
+						
+							//Introducimos la nota y la asignamos a la asignatura explorando el ArrayList de ListaAlumnos
+							System.out.println("Introduzca la nota obtenida");
+							nota = entrada.next();
+							listaAlumnos.get(pos).getNotas().get(posicion).setNota(nota);
+						
+						}else {
+							//Obtenemos la posición de la asignatura a la cual vamos a añadirle la nota
+							
+							int posicion = matriculado(listaAlumnos, dni, asignatura);
+						
+							//Introducimos la nota y la asignamos a la asignatura explorando el ArrayList de ListaAlumnos
+							System.out.println("Introduzca la nota obtenida");
+							nota = entrada.next();
+							listaAlumnos.get(pos).getNotas().get(posicion).setNota(nota);
+							
+						}
 						
 					} catch (Exception except) {//En caso de que se introduzca algún dato de manera incorrecta, saltará la excepción
 						System.out.println(except.getMessage());
